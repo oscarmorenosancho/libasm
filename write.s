@@ -13,6 +13,7 @@ section .data                           ; Section to define Memory
 
 section .text                           ; Section to put code
     global ft_write                       ; A global label to be declared for the linker ( GNU LD )
+    extern ___error
 
 ft_write:
     push rax                            ;save previous values of resisters used in system call
@@ -25,10 +26,18 @@ ft_write:
                                         ; already in place rsi Pointer to string
                                         ; already in place rdx Length of the string
     syscall                             ; Call kernal
+    jc          error                   ; error sets carry flag, rax = errno
+back:
     mov rbp, rsp                        ;discard local variables
     pop rbp                             ;recover values of registers to its previous ones
     pop rax
     ret
+error:
+    mov         r15, rax            ; save errno
+    call        ___error            ; retrieve address to errno
+    mov         [rax], r15          ; put errno in return value of __error (pointer to errno)
+    mov         rax, -1
+    jmp         back
 
 ;_start:                                 ; Main global label ( Linker entry point )
 ;    mov edi, 1                          ; STDOUT File descriptor, CC first arg on rdi

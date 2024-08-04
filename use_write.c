@@ -1,4 +1,6 @@
-int ft_write(unsigned int fd, char *buf, long int count);
+#include <error.h>
+
+extern int ft_write(unsigned int fd, char *buf, long int count);
 
 int main(void)
 {
