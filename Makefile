@@ -6,7 +6,7 @@
 #    By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/16 15:56:04 by apuchill          #+#    #+#              #
-#    Updated: 2024/08/05 19:56:40 by omoreno-         ###   ########.fr        #
+#    Updated: 2024/08/06 11:51:02 by omoreno-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ DIR_TEST_OBJS	:= t_objs
 SRCS		:= ft_write.s
 OBJS		:= $(patsubst %.s, ${DIR_OBJS}/%.o, ${SRCS})
 
-TEST_SRCS	:= use_write.c
+TEST_SRCS	:= use_write.c test_write.c
 #$(foreach dir, $(DIR_TEST), $(wildcard $(dir)/*.c))
 TEST_OBJS	:= $(patsubst %.c, ${DIR_TEST_OBJS}/%.o, ${TEST_SRCS})
 
@@ -50,7 +50,7 @@ $(DIR_OBJS)/%.o :	$(DIR_SRCS)/%.s
 $(DIR_TEST_OBJS)/%.o :	$(DIR_TEST)/%.c
 			@echo	$(GRN_COL)"Compiling Test File "$(RST_COL) $@
 			@mkdir -p $(DIR_TEST_OBJS)
-			@$(CC) $(CFLAGS) -c $< -o $@
+			@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 $(NAME):	$(OBJS)
 			@echo	$(GRN_COL)"Linking libasm ..."$(RST_COL)
