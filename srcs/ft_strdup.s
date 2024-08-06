@@ -11,7 +11,7 @@ global ft_strdup                       ; A global label to be declared for the l
 
 section .text                           ; Section to put code
 ft_strdup:
-	mov		rdx, rsi
+	mov		rcx, rsi
 	call	ft_strlen
 	mov		rsi, rax
 	inc		rsi
@@ -19,7 +19,7 @@ ft_strdup:
 	cmp		rax, 0
 	je		.end
 	mov		rdi, rax
-	mov		rsi, rdx
+	mov		rsi, rcx
 	call	ft_strcpy
 .end:
     ret
