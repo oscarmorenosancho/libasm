@@ -6,7 +6,7 @@
 #    By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/16 15:56:04 by apuchill          #+#    #+#              #
-#    Updated: 2024/08/06 14:01:34 by omoreno-         ###   ########.fr        #
+#    Updated: 2024/08/06 15:22:31 by omoreno-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,10 +18,10 @@ DIR_OBJS	:= objs
 DIR_TEST	:= tests
 DIR_TEST_OBJS	:= t_objs
 
-SRCS		:= ft_strlen.s ft_write.s ft_read.s
+SRCS		:= ft_strlen.s ft_strcpy.s ft_write.s ft_read.s
 OBJS		:= $(patsubst %.s, ${DIR_OBJS}/%.o, ${SRCS})
 
-TEST_SRCS	:= main_test.c test_strlen.c test_write.c test_read.c
+TEST_SRCS	:= main_test.c test_strlen.c test_strcpy.c test_write.c test_read.c
 #$(foreach dir, $(DIR_TEST), $(wildcard $(dir)/*.c))
 TEST_OBJS	:= $(patsubst %.c, ${DIR_TEST_OBJS}/%.o, ${TEST_SRCS})
 
