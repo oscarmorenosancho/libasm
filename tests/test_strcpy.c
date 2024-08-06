@@ -3,7 +3,7 @@
 #include <tests.h>
 #include <string.h>
 
-char 	*test_strcpy(char *dest, const char *src)
+int 	test_strcpy(char *dest, const char *src)
 {
 	char	*ret;
 
