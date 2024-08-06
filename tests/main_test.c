@@ -15,6 +15,15 @@ int main(void)
 
 	test_strcpy(buf, plain);	
 
+	test_strcmp("", "");	
+	test_strcmp("a", "a");	
+	test_strcmp("a", "b");	
+	test_strcmp("b", "a");	
+	test_strcmp("hw2", "hw");	
+	test_strcmp("hw*", "hw");	
+	test_strcmp("hw", "hw*");	
+	test_strcmp(hw2, hw);	
+
 	test_write(1, 1, hw, strlen(hw));
 	test_write(2, 2, hw2, strlen(hw2));
 	test_write(1, 1, uc, strlen(uc));
