@@ -1,5 +1,7 @@
 a.out
 hello
 *.o
+test
+*.a
 objs
 t_objs

@@ -10,6 +10,8 @@ int main(void)
 {
 	char buf[128];
 
+	test_strlen(uc);
+
 	test_write(1, hw, strlen(hw));
 	test_write(2, hw2, strlen(hw2));
 	test_write(1, uc, strlen(uc));
