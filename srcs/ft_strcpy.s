@@ -8,6 +8,7 @@ global ft_strcpy                       ; A global label to be declared for the l
 
 section .text                           ; Section to put code
 ft_strcpy:
+	push	rdx
 	xor		rax, rax					; set to 0 by xoring with itself
 .loop:
 	mov		dl, BYTE [rsi + rax]
@@ -18,4 +19,5 @@ ft_strcpy:
 	jmp		.loop
 .end:
 	mov		rax, rdi
+	pop		rdx
     ret

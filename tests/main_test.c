@@ -5,7 +5,7 @@ static const char *hw = "Hello World!\n";
 static const char *hw2 = "Hello World! to stderr\n";
 static const char *uc = CYN_COL"Some special characters 你好世界!\n"RST_COL;
 static const char *tab = "\ttabulated\n";
-static const char *plain = "\"Plain text and some special characters 你好世界! to copy\"";
+static const char *plain = "Plain text and some special characters 你好世界! to copy";
 
 int main(void)
 {
