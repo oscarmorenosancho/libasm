@@ -10,6 +10,11 @@ static const char *plain = "Plain text and some special characters 你好世界!
 int main(void)
 {
 	char buf[128];
+	(void) hw;
+	(void) hw2;
+	(void) uc;
+	(void) tab;
+	(void) plain;
 
 	test_strlen(uc);
 

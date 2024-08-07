@@ -10,21 +10,17 @@ int 	test_strdup(const char *src)
 
 	ret = NULL;
 	printf(GRN_COL"\nUsing ft_strdup\n"RST_COL);
-	printf("before dup: return is %p\n", ret);
-	printf("before dup: destination is %s, \nsource is %s\n", ret, src);
+	printf("before dup:\n\treturn is %p \"%s\",\n\tsource is %p \"%s\"\n", ret, ret, src, src);
 	ret = ft_strdup(src);
-	printf("after dup: destination is %s, \nsource is %s\n", ret, src);
-	printf("after dup: return is %p\n", ret);
+	printf("after dup:\n\treturn is %p \"%s\",\n\tsource is %p \"%s\"\n", ret, ret, src, src);
 	if (ret)
 		free(ret);
 
 	ret = NULL;
 	printf(BLU_COL"\nUsing strdup\n"RST_COL);
-	printf("before dup: return is %p\n", ret);
-	printf("before dup: destination is %s, \nsource is %s\n", ret, src);
+	printf("before dup:\n\treturn is %p \"%s\",\n\tsource is %p \"%s\"\n", ret, ret, src, src);
 	ret = strdup(src);
-	printf("after dup: destination is %s, \nsource is %s\n", ret, src);
-	printf("after dup: return is %p\n", ret);
+	printf("after dup:\n\treturn is %p \"%s\",\n\tsource is %p \"%s\"\n", ret, ret, src, src);
 	if (ret)
 		free(ret);
 	return (0);
