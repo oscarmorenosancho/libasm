@@ -6,7 +6,7 @@
 #    By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/16 15:56:04 by apuchill          #+#    #+#              #
-#    Updated: 2024/08/06 19:11:07 by omoreno-         ###   ########.fr        #
+#    Updated: 2024/08/08 13:24:27 by omoreno-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,12 +15,21 @@ TEST		:= test.out
 
 DIR_SRCS	:= srcs
 DIR_OBJS	:= objs
+DIR_BONUS_S	:= srcs_bonus
+DIR_BONUS_O	:= objs_bonus
 DIR_TEST	:= tests
 DIR_TEST_OBJS	:= t_objs
 
 SRCS		:= ft_strlen.s ft_strcpy.s ft_strcmp.s ft_strdup.s \
 				ft_write.s ft_read.s
 OBJS		:= $(patsubst %.s, ${DIR_OBJS}/%.o, ${SRCS})
+
+BONUS_SRCS	:= ft_atoi_base_bonus.s ft_list_push_front_bonus.s \
+				ft_list_remove_if_bonus.s ft_list_size_bonus.s \
+				ft_list_sort_bonus.s
+				
+BONUS_OBJS	:= $(patsubst %.s, ${DIR_BONUS_O}/%.o, ${BONUS_SRCS})
+
 
 TEST_SRCS	:= main_test.c test_strlen.c test_strcpy.c test_strcmp.c test_strdup.c \
 				test_write.c test_read.c
@@ -49,6 +58,11 @@ $(DIR_OBJS)/%.o :	$(DIR_SRCS)/%.s
 			@mkdir -p $(DIR_OBJS)
 			@$(ASM) $(ASM_FLAGS) $< -o $@
 
+$(DIR_BONUS_O)/%.o :	$(DIR_BONUS_S)/%.s
+			@echo	$(GRN_COL)"Assembling Code File"$(RST_COL) $@
+			@mkdir -p $(DIR_BONUS_O)
+			@$(ASM) $(ASM_FLAGS) $< -o $@
+
 $(DIR_TEST_OBJS)/%.o :	$(DIR_TEST)/%.c
 			@echo	$(GRN_COL)"Compiling Test File "$(RST_COL) $@
 			@mkdir -p $(DIR_TEST_OBJS)
@@ -58,20 +72,30 @@ $(NAME):	$(OBJS)
 			@echo	$(GRN_COL)"Linking libasm ..."$(RST_COL)
 			@ar -rcs $(NAME) $(OBJS)
 
+.bonus:		$(OBJS) $(BONUS_OBJS)
+			@touch	.bonus
+			@echo	$(GRN_COL)"Linking libasm with bonus ..."$(RST_COL)
+			@ar -rcs $(NAME) $(OBJS) $(BONUS_OBJS)
+
 test:	$(NAME) $(TEST_OBJS)
 			@echo	$(GRN_COL)"Linking test ..."$(RST_COL)
 			@$(CC) $(TEST_OBJS) $(CFLAGS) $(LFLAGS) -o test
 
+bonus:		.bonus
+.PHONY:		bonus
+
 clean:
 			@echo	$(RED_COL)"Cleaning ..."$(RST_COL)
 			@$(RM) $(DIR_OBJS)
+			@$(RM) $(DIR_BONUS_O)
 			@$(RM) $(DIR_TEST_OBJS)
 .PHONY:	clean
 
 fclean: clean
 			@echo	$(RED_COL)"Fully Cleaning ..."$(RST_COL)
-			@$(RM) $(NAME)
-			@$(RM) test
+			@$(RM)	$(NAME)
+			@$(RM)	.bonus
+			@$(RM)	test
 .PHONY:	fclean
 
 re: fclean $(NAME)
