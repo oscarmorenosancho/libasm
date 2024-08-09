@@ -24,8 +24,8 @@ ft_isspace:
 	mov		dil, [rdi]  ;get byte
 	cmp		dil, 0		;if equals 0 not a space
 	je		.end		;so end to return
-	cmp		dil, ' '	;if greater or equal ' ' is not a space
-	jge		.end		;so end to return
+	cmp		dil, ' '	;if greater ' ' is not a space
+	jg		.end		;so end to return
 	inc		rax			;else mark is a space
 .end:
 	pop		rdi			;recover rdi original value
