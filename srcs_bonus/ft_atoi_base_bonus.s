@@ -166,13 +166,40 @@ ft_get_sign:
 ; RSI	string to base string
 ; RAX	resulting unsigner int value
 ft_atoui_base:
+	push	r8				; save register in stack to recover later
+	push	rbx				; save register in stack to recover later
+	push	rcx				; save register in stack to recover later
+	push	rdx				; save register in stack to recover later
 	push	rsi				; save register in stack to recover later
 	push	rdi				; save register in stack to recover later
-
-
-
+	mov		r8, rdi			; use r8 to iterate pointer instead of rdi since needs to use as arg for call
+	mov		rbx, 0			; use rbx to acumulate result
+	mov		rdi, rsi		; pass base to 1st arg
+	call	ft_strlen		; the lenghh of base is the actual length
+	mov		rcx, rax		; use rcx to keep the base number
+.loop:
+	mov		rax, rbx		; preset the rax to first multiplier
+	mul		rcx				; shift a digit to left by mult by base
+	mov		rdx, rax		; put mult result back from rax into rdx
+	mov		dl, byte [r8]	; get string character into rdx lower byte
+	cmp		dl, 0
+	je		.break_loop		; if cur char is \0, break loop
+	mov		rdi, rsi		; pass base to 1st arg
+	mov		sil, dl			; pass curr char to 2nd arg
+	call	ft_get_index
+	cmp		rax ,-1			; if char not found in base
+	je		.break_loop		; parsing is finished
+	add		rbx, rax		; acumulate cur digit
+	inc		r8
+	jmp		.loop
+.break_loop:
+	mov		rax, rbx		; coopy acummulator register to result
 	pop		rdi				; recover register from stack
 	pop		rsi				; recover register from stack
+	pop		rdx				; recover register from stack
+	pop		rcx				; recover register from stack
+	pop		rbx				; recover register from stack
+	pop		r8				; recover register from stack
 	ret
 
 
