@@ -4,12 +4,12 @@
 ; RDI buffer pointer
 ; RAX Result Return
 
-extern	malloc
-extern	ft_strlen
-extern	ft_strcpy
-global ft_strdup                       ; A global label to be declared for the linker ( GNU LD )
-
 section .text                           ; Section to put code
+	extern	malloc
+	extern	ft_strlen
+	extern	ft_strcpy
+	global ft_strdup                       ; A global label to be declared for the linker ( GNU LD )
+
 
 ft_strdup:
 	push	rdi							;save source str witch came on rdi on stack

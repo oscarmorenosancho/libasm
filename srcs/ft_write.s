@@ -7,10 +7,10 @@
 ; RDX Length of string
 ; RAX Result Return
 
-extern	__errno_location
-global ft_write                       ; A global label to be declared for the linker ( GNU LD )
-
 section .text                           ; Section to put code
+    extern	__errno_location
+    global ft_write                       ; A global label to be declared for the linker ( GNU LD )
+
 ft_write:
 	;push rbp                            ;save rbp on stack
 	;mov	rbp, rsp                        ;base point set to stack pointer

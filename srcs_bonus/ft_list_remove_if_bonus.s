@@ -4,9 +4,9 @@
 ; RSI source pointer
 ; RAX Result Return
 
-global ft_list_remove_if                       ; A global label to be declared for the linker ( GNU LD )
-
 section .text                           ; Section to put code
+	global ft_list_remove_if                       ; A global label to be declared for the linker ( GNU LD )
+
 ft_list_remove_if:
 	push	rdx
 	xor		rax, rax					; set to 0 by xoring with itself

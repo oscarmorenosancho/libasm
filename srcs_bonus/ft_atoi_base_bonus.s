@@ -5,10 +5,10 @@
 ; RSI base pointer
 ; RAX Result Return
 
-extern	ft_strlen
-global ft_atoi_base                       ; A global label to be declared for the linker ( GNU LD )
-
 section .text                           ; Section to put code
+	extern	ft_strlen
+	global ft_atoi_base                       ; A global label to be declared for the linker ( GNU LD )
+
 
 ft_validate_base:
 

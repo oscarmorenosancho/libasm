@@ -4,9 +4,9 @@
 ; RSI s2 pointer
 ; RAX Result Return
 
-global ft_strcmp                       ; A global label to be declared for the linker ( GNU LD )
-
 section .text                           ; Section to put code
+	global ft_strcmp                       ; A global label to be declared for the linker ( GNU LD )
+
 ft_strcmp:
 	xor		rax, rax					; set to 0 by xoring with itself
 	xor		rdx, rdx					; set to 0 by xoring with itself

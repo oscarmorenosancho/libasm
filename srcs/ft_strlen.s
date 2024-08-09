@@ -3,9 +3,9 @@
 ; RDI buffer pointer
 ; RAX Result Return
 
-global ft_strlen                       ; A global label to be declared for the linker ( GNU LD )
-
 section .text                           ; Section to put code
+	global ft_strlen                       ; A global label to be declared for the linker ( GNU LD )
+
 ft_strlen:
 	xor		rax, rax					; set to 0 by xoring with itself
 .loop:
