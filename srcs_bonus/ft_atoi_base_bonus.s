@@ -137,14 +137,27 @@ ft_trim_spaces:
 ft_get_sign:
 	push	rdx							; save register to restablish its value
 	push	rdi
-	xor		rax, rax
+	xor		rax, rax					; counter of - init to 0
 .loop:
 	mov		dl, [rdi]
-	cmp		dl, '+'
-
+	mov		dl, [rdi]
+	cmp		dl, '-'						; if cur value is - update count
+	je		.update_count				; update count and continue loop
+	mov		dl, [rdi]
+	cmp		dl, '+'						; if cur value is + update count
+	je		.continue_loop				; just continue loop
+	jmp		.break_loop					; otherwise no more signs, break loop
+.update_count:
+	inc		rax
+.continue_loop:
 	inc		rdi
 	jmp		.loop
 .break_loop:
+	and		rax, 0x1					; mask the last bit that says if result is even or odd
+	neg		rax							; negate to turn odd (1) to negative (-1), if even (0) no change
+	jnz		.end 						; after negate, if no flag zero rax is already -1, so go to end
+	inc		rax							; otherwise result is positive, so just increment to change 0 to 1
+.end:
 	pop		rdi
 	pop		rdx
 	ret
