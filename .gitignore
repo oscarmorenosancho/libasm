@@ -2,6 +2,7 @@ a.out
 hello
 *.o
 test
+testbonus
 *.a
 objs
 objs_bonus
