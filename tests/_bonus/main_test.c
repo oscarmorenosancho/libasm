@@ -16,6 +16,7 @@ int main(void)
 	test_validate_base_examples();
 	test_trim_spaces_examples();
 	test_get_sign_examples();
+	test_atoui_base_examples();
 	// char buf[128];
 	// (void) hw;
 	// (void) hw2;
