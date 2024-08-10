@@ -141,11 +141,15 @@ ft_trim_spaces:
 ; RDI	pointer to string to get sign, and pointer where there are no more signs
 ; RAX	return sign value (1 if positive, -1 if negative)
 ft_get_sign:
+	cmp		rdi, 0
+	je		.null_input					; if input pointer is NULL break loop
 	push	rdx							; save register to restablish its value
 	push	rdi
 	xor		rax, rax					; counter of - init to 0
+	mov		rdi, [rdi]					;dereference pointer to string to string
+	cmp		rdi, 0
+	je		.break_loop					; if input string is NULL break loop
 .loop:
-	mov		dl, [rdi]
 	mov		dl, [rdi]
 	cmp		dl, '-'						; if cur value is - update count
 	je		.update_count				; update count and continue loop
@@ -164,8 +168,12 @@ ft_get_sign:
 	jnz		.end 						; after negate, if no flag zero rax is already -1, so go to end
 	inc		rax							; otherwise result is positive, so just increment to change 0 to 1
 .end:
-	pop		rdi
+	pop		rdx							; recover original rdi into rdx
+	mov		[rdx], rdi					; save pointer to string to reference pointer
 	pop		rdx
+	ret
+.null_input
+	mov		rax, 1
 	ret
 
 ; RDI	string to convert

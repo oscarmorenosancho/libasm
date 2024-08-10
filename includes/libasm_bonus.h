@@ -15,7 +15,7 @@ size_t	ft_count_char(const char *str, char c);
 ssize_t	ft_get_index(const char *str, char c);
 int		ft_validate_base(const char *base);
 char	*ft_trim_spaces(const char *str);
-int		ft_get_sign(char *str);
+int		ft_get_sign(char **str);
 long	ft_atoui_base(char *str, char *base);	
 int		ft_atoi_base(char *str, char *base);
 t_list	*ft_create_elem(void *data);

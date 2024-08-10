@@ -20,5 +20,6 @@ int		test_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)(),\
 							void (*free_fct)(void *));
 int		test_validate_base_examples();
 int		test_trim_spaces_examples();
+int		test_get_sign_examples();
 
 #endif
