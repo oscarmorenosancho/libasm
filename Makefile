@@ -6,7 +6,7 @@
 #    By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/16 15:56:04 by apuchill          #+#    #+#              #
-#    Updated: 2024/08/08 13:24:27 by omoreno-         ###   ########.fr        #
+#    Updated: 2024/08/10 12:39:58 by omoreno-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,9 @@ DIR_BONUS_S	:= srcs_bonus
 DIR_BONUS_O	:= objs_bonus
 DIR_TEST	:= tests
 DIR_TEST_OBJS	:= t_objs
+DIR_TESTB	:= $(DIR_TEST)/_bonus
+DIR_TESTB_OBJS	:= $(DIR_TEST_OBJS)/_bonus
+
 
 SRCS		:= ft_strlen.s ft_strcpy.s ft_strcmp.s ft_strdup.s \
 				ft_write.s ft_read.s
@@ -30,11 +33,19 @@ BONUS_SRCS	:= ft_atoi_base_bonus.s ft_list_push_front_bonus.s \
 				
 BONUS_OBJS	:= $(patsubst %.s, ${DIR_BONUS_O}/%.o, ${BONUS_SRCS})
 
-
-TEST_SRCS	:= main_test.c test_strlen.c test_strcpy.c test_strcmp.c test_strdup.c \
+TEST_SRCS	:= test_strlen.c test_strcpy.c test_strcmp.c test_strdup.c \
 				test_write.c test_read.c
+TEST_MSRC	:= main_test.c
+
+TEST_B_SRCS	:= test_atoi_base.c
+TEST_B_MSRC	:= main_test.c
+
 #$(foreach dir, $(DIR_TEST), $(wildcard $(dir)/*.c))
 TEST_OBJS	:= $(patsubst %.c, ${DIR_TEST_OBJS}/%.o, ${TEST_SRCS})
+TEST_MOBJ	:= $(patsubst %.c, ${DIR_TEST_OBJS}/%.o, ${TEST_MSRC})
+
+TEST_B_OBJS	:= $(patsubst %.c, ${DIR_TESTB_OBJS}/%.o, ${TEST_B_SRCS})
+TEST_B_MOBJ	:= $(patsubst %.c, ${DIR_TESTB_OBJS}/%.o, ${TEST_B_MSRC})
 
 INCLUDES	= -I includes
 
@@ -68,6 +79,12 @@ $(DIR_TEST_OBJS)/%.o :	$(DIR_TEST)/%.c
 			@mkdir -p $(DIR_TEST_OBJS)
 			@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
+$(DIR_TESTB_OBJS)/%.o :	$(DIR_TESTB)/%.c
+			@echo	$(GRN_COL)"Compiling Bonus Test File "$(RST_COL) $@
+			@mkdir -p $(DIR_TEST_OBJS)
+			@mkdir -p $(DIR_TESTB_OBJS)
+			@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
 $(NAME):	$(OBJS)
 			@echo	$(GRN_COL)"Linking libasm ..."$(RST_COL)
 			@ar -rcs $(NAME) $(OBJS)
@@ -77,9 +94,13 @@ $(NAME):	$(OBJS)
 			@echo	$(GRN_COL)"Linking libasm with bonus ..."$(RST_COL)
 			@ar -rcs $(NAME) $(OBJS) $(BONUS_OBJS)
 
-test:	$(NAME) $(TEST_OBJS)
+test:	$(NAME) $(TEST_OBJS) $(TEST_MOBJ)
 			@echo	$(GRN_COL)"Linking test ..."$(RST_COL)
-			@$(CC) $(TEST_OBJS) $(CFLAGS) $(LFLAGS) -o test
+			@$(CC)  $(TEST_MOBJ) $(TEST_OBJS) $(CFLAGS) $(LFLAGS) -o test
+
+testbonus:	.bonus $(TEST_OBJS) $(TEST_B_OBJS) $(TEST_B_MOBJ)
+			@echo	$(GRN_COL)"Linking bonus test ..."$(RST_COL)
+			@$(CC)  $(TEST_B_MOBJ) $(TEST_OBJS) $(TEST_B_OBJS) $(CFLAGS) $(LFLAGS) -o testbonus
 
 bonus:		.bonus
 .PHONY:		bonus
@@ -89,6 +110,7 @@ clean:
 			@$(RM) $(DIR_OBJS)
 			@$(RM) $(DIR_BONUS_O)
 			@$(RM) $(DIR_TEST_OBJS)
+			@$(RM) $(DIR_TESTB_OBJS)
 .PHONY:	clean
 
 fclean: clean
@@ -96,6 +118,7 @@ fclean: clean
 			@$(RM)	$(NAME)
 			@$(RM)	.bonus
 			@$(RM)	test
+			@$(RM)	testbonus
 .PHONY:	fclean
 
 re: fclean $(NAME)
