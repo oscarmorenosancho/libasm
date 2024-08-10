@@ -172,7 +172,7 @@ ft_get_sign:
 	mov		[rdx], rdi					; save pointer to string to reference pointer
 	pop		rdx
 	ret
-.null_input
+.null_input:
 	mov		rax, 1
 	ret
 
@@ -192,18 +192,19 @@ ft_atoui_base:
 	call	ft_strlen		; the lenghh of base is the actual length
 	mov		rcx, rax		; use rcx to keep the base number
 .loop:
-	mov		rax, rbx		; preset the rax to first multiplier
-	mul		rcx				; shift a digit to left by mult by base
-	mov		rdx, rax		; put mult result back from rax into rdx
 	mov		dl, byte [r8]	; get string character into rdx lower byte
 	cmp		dl, 0
 	je		.break_loop		; if cur char is \0, break loop
-	mov		rdi, rsi		; pass base to 1st arg
-	mov		sil, dl			; pass curr char to 2nd arg
+	mov		rdi, [rsp+8]	; pass base whitch is stored on stack as 2nd last to 1st arg
+	mov		sil, byte [r8]  ; get string character into 2nd arg
 	call	ft_get_index
 	cmp		rax ,-1			; if char not found in base
 	je		.break_loop		; parsing is finished
-	add		rbx, rax		; acumulate cur digit
+	mov		rsi, rax		; save rax in rsi temporally
+	mov		rax, rbx		; preset the rax to first multiplier
+	mul		rcx				; shift a digit to left by mult by base
+	mov		rbx, rax		; put mult result back from rax into rbx
+	add		rbx, rsi		; acumulate cur digit
 	inc		r8
 	jmp		.loop
 .break_loop:

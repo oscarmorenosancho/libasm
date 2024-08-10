@@ -19,7 +19,7 @@ int		test_atoui_base(char *str, char *base)
 int		test_atoui_base_examples()
 {
 	size_t		i;
-	char		*strs[] = {"", "8", "F", "15", "FF", NULL};
+	char		*strs[] = {"15", "FF", "8", "F", "", "15x", "FFx", "8x", "Fx", "x", NULL};
 
 	i = 0;
 	while (strs[i])
