@@ -83,10 +83,12 @@ ft_get_index:
 ft_validate_base:
 	push	rdi							; save register to restablish its value
 	push	rsi							; save register to restablish its value
-	; while the first char in string is not repeated and neither + - or isspace
+	cmp		rdi, 0						; if base is NULL
+	je		.invalid					; go to invalid and leave
 	call	ft_strlen
-	cmp		rax, 2
-	jle		.invalid					; go to invalid and leave
+	cmp		rax, 2						; if length less than 2
+	jl		.invalid					; go to invalid and leave
+	; while the first char in string is not repeated and neither + - or isspace
 .loop:									; loop through all char to see if it's repeated later
 	mov		sil, BYTE [rdi]				; take content of current position in rsi with is 2nd arg
 	cmp		sil, 0						; if current value is \0 we finish the traverse of base
@@ -120,8 +122,13 @@ ft_validate_base:
 ; RAX	string trimmed
 ft_trim_spaces:
 	push	rdi				; save original string to recover later
+	cmp		rdi, 0
+	je		.break_loop		; if input string is NULL break loop
 .loop:
+	push	rdi				; save pointer to recover after call
+	mov		dil, byte [rdi] ; pass the current char pointed as 1st arg
 	call	ft_isspace
+	pop		rdi				; recover pointer after call
 	cmp		rax, 0
 	je		.break_loop		; if cur char is not space (including \0) break loop
 	inc		rdi				; next char
