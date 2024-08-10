@@ -21,7 +21,6 @@ section .text                           ; Section to put code
 ft_isspace:
 	push	rdi			;save rdi to recover its value later
 	xor		rax,rax		;by default marck is not a space
-	mov		dil, [rdi]  ;get byte
 	cmp		dil, 0		;if equals 0 not a space
 	je		.end		;so end to return
 	cmp		dil, ' '	;if greater ' ' is not a space
