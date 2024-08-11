@@ -24,6 +24,8 @@ int main(void)
 
 	test_create_elem(content);
 	test_list_push_front(&l1, content);
+
+	test_list_size_examples();
 	// char buf[128];
 	// (void) hw;
 	// (void) hw2;
