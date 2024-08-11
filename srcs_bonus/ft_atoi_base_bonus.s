@@ -230,14 +230,18 @@ ft_atoi_base:
 	call	ft_validate_base
 	cmp		rax, 0
 	je		.end			; if base not valid keep 0 in rax witch is the value to return as a result
-	pop		rdi				; get into rdi from stack, what was pushed after trim_space, as 1st arg
-	call	ft_get_sign		; returns in rdi the rest of string to parse
+
+	;pop		rdi			; get into rdi from stack, what was pushed after trim_space, as 1st arg
+	mov		rdi, rsp		; last potition of stack contains pointer to the string
+	call	ft_get_sign		; returns where rdi points of the rest of string to parse
+	mov		rdi, [rsp]		; after call dereference rsp, witch contains remain str, into rdi
 	push	rax				; save in stack return from get_sign to use it later
 	call	ft_atoui_base   ; rdi remains being base string
-	pop		rdi				; get into rdi from stack, what was pushed after get_sign that is sign
+	pop		rdi				; get into rdi from stack, return of get_sign pushed
+	pop		rsi				; purge stack where the string remain position is into rsi no longer needed
 	cmp		rdi, -1			; if sign is not -1
 	jne		.end			; leave reault as is
-	neg		rax				; else negate result since sign is negative
+	neg		rax				; else negate 32bits result since sign is negative
 .end:
 	pop		rdi				; recover input string to its original value
 	pop		rsi				; recover input base string to its original value

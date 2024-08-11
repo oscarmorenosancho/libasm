@@ -6,7 +6,7 @@
 #    By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/16 15:56:04 by apuchill          #+#    #+#              #
-#    Updated: 2024/08/10 20:33:19 by omoreno-         ###   ########.fr        #
+#    Updated: 2024/08/11 12:40:57 by omoreno-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ TEST_SRCS	:= test_strlen.c test_strcpy.c test_strcmp.c test_strdup.c \
 TEST_MSRC	:= main_test.c
 
 TEST_B_SRCS	:= test_isspace.c test_count_char.c test_get_index.c test_validate_base.c \
-				test_trim_spaces.c test_get_sign.c test_atoui_base.c
+				test_trim_spaces.c test_get_sign.c test_atoui_base.c test_atoi_base.c
 
 TEST_B_MSRC	:= main_test.c
 

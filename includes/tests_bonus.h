@@ -22,5 +22,6 @@ int		test_validate_base_examples();
 int		test_trim_spaces_examples();
 int		test_get_sign_examples();
 int		test_atoui_base_examples();
+int		test_atoi_base_examples();
 
 #endif
