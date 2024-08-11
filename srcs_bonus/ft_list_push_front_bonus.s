@@ -25,7 +25,7 @@ ft_create_elem:
 	
 ; RDI	contains pointer begin list
 ; RSI	contains pointer to data to store to as content
-; RAX	pointer to list node created or NULL if allocation failed
+; RAX	return not used
 ft_list_push_front:
 	cmp		rdi, 0								; if begin list is NULL
 	je		.end								; just end (can't add to nowhere)

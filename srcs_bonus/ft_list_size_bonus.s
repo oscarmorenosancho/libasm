@@ -7,17 +7,17 @@
 section .text                           ; Section to put code
 	global ft_list_size                       ; A global label to be declared for the linker ( GNU LD )
 
+; RDI	contains begin list
+; RAX	returns count of elements in list
 ft_list_size:
-	push	rdx
-	xor		rax, rax					; set to 0 by xoring with itself
+	push	rdi							; save register to recover it later
+	xor		rax, rax					; init counter
 .loop:
-	mov		dl, BYTE [rsi + rax]
-	mov		BYTE [rdi + rax], dl
-	cmp		dl, 0
-	je		.end
+	cmp		rdi, 0						; if current node is NULL, break loop
+	je		.break_loop
+	mov		rdi, [rdi + 8]				; point current to next node
 	inc		rax
-	jmp		.loop
-.end:
-	mov		rax, rdi
-	pop		rdx
+	jmp		.loop						; loop to next node
+.break_loop:
+	pop		rdi							; recover original value of register
     ret
