@@ -36,10 +36,7 @@ ft_list_push_front:
 	je		.end								; if node creation failed, just abort
 	mov		rdi, [rsp]							; recover list poiter from last stack
 	mov		rsi, [rdi]							; dereference 1st node of list, into rsi
-	cmp		rsi, 0								; if list is empty list begins with NULL
-	je		.point_first						; nothing to set as next in new node
-	mov		[rax + 8], rdi						; set next to previuos list begin
-.point_first
+	mov		[rax + 8], rsi						; set next to previuos list begin
 	mov		[rdi], rax							; point new created element by list begin							
 .abort:
 	pop		rdi									; recover 1st arg into register

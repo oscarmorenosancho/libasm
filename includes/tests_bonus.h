@@ -12,8 +12,8 @@ int		test_trim_spaces(const char *str);
 int		test_get_sign(char *str);
 int		test_atoui_base(char *str, char *base);	
 int		test_atoi_base(char *str, char *base);
-int		test_create_elem(void *data);
-int		test_list_push_front(t_list **begin_list, void *data);
+int		test_create_elem(char *data);
+int		test_list_push_front(t_list **begin_list, char *data);
 int		test_list_size(t_list *begin_list);
 int 	test_list_sort(t_list **begin_list, int (*cmp)());
 int		test_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)(),\
