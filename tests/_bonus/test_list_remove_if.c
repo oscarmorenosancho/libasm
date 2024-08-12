@@ -9,16 +9,49 @@
 int		test_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)(),\
 							void (*free_fct)(void *))
 {
-	(void)begin_list;
-	(void)data_ref;
-	(void)cmp;
-	(void)free_fct;
+	// t_list *node;
+	if (!begin_list)
+		printf(GRN_COL"list passed is NULL"RST_COL"\n");
+	else if (!(*begin_list))
+		printf(GRN_COL"list passed is empty"RST_COL"\n");
+	printf(GRN_COL"Using ft_list_remove_if"RST_COL"\n");
+	printf(GRN_COL"Test to remove an element from a list by when comparing data ref: \"%s\" "RST_COL"\n", (char*)data_ref);
+	ft_list_remove_if(begin_list, data_ref, cmp, free_fct);
+	// printf(GRN_COL"Node popped by ft_list_pop_front content is: %p"RST_COL"\n", node);
+	// printf(GRN_COL"node content content is: \"%s\""RST_COL"\n", (char *)node->data);
 	return	(0);
 }
 
 int		test_list_remove_if_examples()
 {
+	t_list	*l = NULL;
+	char	buf[128];
+	char	*content;
+	int		number = 10;
+	int		i;
 
 
+	test_list_remove_if(NULL, "A", strcmp, NULL);
+
+	printf(GRN_COL"Create an empty list"RST_COL"\n");
+	test_list_remove_if(&l, "A", strcmp, NULL);
+
+	printf(GRN_COL"Create a list with one node"RST_COL"\n");
+	ft_list_push_front(&l, "static data");
+	test_list_remove_if(&l, "A", strcmp, NULL);
+	test_list_remove_if(&l, "static data", strcmp, NULL);
+
+	printf(GRN_COL"Create a list with %d node"RST_COL"\n", number);
+	for (i = 0; i < number; i++)
+	{
+		sprintf(buf, "content of node %d", i);
+		content = strdup(buf);
+		ft_list_push_front(&l, content);
+	}
+	for (i = 0; i < number; i++)
+	{
+		sprintf(buf, "content of node %d", i);
+		test_list_remove_if(&l, buf, strcmp, free);
+	}
 	return	(0);
 }
