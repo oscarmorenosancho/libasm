@@ -9,6 +9,7 @@ section .text                           ; Section to put code
 	global ft_list_push_front                       ; A global label to be declared for the linker ( GNU LD )
 	global ft_create_elem                       ; A global label to be declared for the linker ( GNU LD )
 
+; t_list	*ft_create_elem(void *data);
 ; RDI	contains pointer to data to store to as content
 ; RAX	pointer to list node created or NULL if allocation failed
 ft_create_elem:
@@ -23,6 +24,7 @@ ft_create_elem:
 .end:
     ret
 	
+; void	ft_list_push_front(t_list **begin_list, void *data);
 ; RDI	contains pointer begin list
 ; RSI	contains pointer to data to store to as content
 ; RAX	return not used

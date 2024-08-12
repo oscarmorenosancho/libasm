@@ -7,6 +7,7 @@
 section .text                           ; Section to put code
 	global ft_list_size                       ; A global label to be declared for the linker ( GNU LD )
 
+; int	ft_list_size(t_list *begin_list);
 ; RDI	contains begin list
 ; RAX	returns count of elements in list
 ft_list_size:
