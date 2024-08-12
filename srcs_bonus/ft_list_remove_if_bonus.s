@@ -36,13 +36,16 @@ ft_destroy_elem:
 ;RAX	return popped node
 ft_list_pop_front:
 	push	rsi							; save register to recover it
+	xor		rax, rax
 	cmp		rdi, 0						; if begin list is NULL
 	je		.end						; just end (can't do enything to nowhere)
-	mov		rax, [rdi]					; get first node of list into rax
+	cmp		qword [rdi], 0				; if begin list is empty
+	je		.end						; just end (can't do enything to nowhere)
+	mov		rax, qword [rdi]					; get first node of list into rax
 	cmp		rax, 0						; if first node doesn't exist 
 	je		.end						; nothing more to do just leave
-	mov		rsi, [rax + 8]				; get next pointer of first node
-	mov		[rdi], rsi					; set begin list to next node
+	mov		rsi, qword [rax + 8]		; get next pointer of first node
+	mov		qword [rdi], rsi					; set begin list to next node
 .end:
 	pop		rsi							; recover register to its original value
 	ret

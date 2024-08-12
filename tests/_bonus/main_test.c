@@ -10,22 +10,27 @@ static const char *plain = "Plain text and some special characters 你好世界!
 
 int main(void)
 {
-	t_list	*l1 = NULL;
-	char	*content = "content";
+	(void)plain;
+	// t_list	*l1 = NULL;
+	// char	*content = "content";
 
-	test_isspace();
-	test_count_char("qwertyQWERTYr YY");
-	test_get_index(plain, "qwertyQWERTYP你");
-	test_validate_base_examples();
-	test_trim_spaces_examples();
-	test_get_sign_examples();
-	test_atoui_base_examples();
-	test_atoi_base_examples();
+	// test_isspace();
+	// test_count_char("qwertyQWERTYr YY");
+	// test_get_index(plain, "qwertyQWERTYP你");
+	// test_validate_base_examples();
+	// test_trim_spaces_examples();
+	// test_get_sign_examples();
+	// test_atoui_base_examples();
+	// test_atoi_base_examples();
 
-	test_create_elem(content);
-	test_list_push_front(&l1, content);
+	// test_create_elem(content);
+	// test_list_push_front(&l1, content);
 
-	test_list_size_examples();
+	// test_list_size_examples();
+	// test_destroy_elem_examples();
+	test_list_pop_examples();
+	// test_list_remove_if_examples();
+
 	// char buf[128];
 	// (void) hw;
 	// (void) hw2;
