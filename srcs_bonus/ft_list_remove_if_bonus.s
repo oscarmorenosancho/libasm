@@ -72,18 +72,30 @@ ft_list_remove_if:
 	mov		rdi, r8						; else place next pointer pointer to rdi
 	add		rdi, 8						; .next is up 8 bytes from node start
 	call	ft_list_remove_if			; and recurse the list pointed by next
-
+	push	r8
+	push	rcx
+	push	rdx
+	push	rsi
+	push	rdi
 	mov		rdi, [r8]					; 1st arg is node content
 	call	rdx							; call cmp to see if this node must be removed
-	mov		rdi, [rsp]					; copy from stack previous value of rdi
+	pop		rdi
+	pop		rsi
+	pop		rdx
+	pop		rcx
+	pop		r8
 	cmp		rax, 0						; if cmp doesn't give 0
 	jne		.nothing_else				; no need to remove node
 	call	ft_list_pop_front			; pop front node of list;
 	cmp		rax, 0						; if pop return NULL, no node to destroy
 	je		.nothing_else				; so nothing else
+	push	rsi							; save rsi to recover afte call
+	push	rdi							; save rdi to recover afte call
 	mov		rdi, rax					; set node to destroy as 1st arg
 	mov		rsi, rcx					; give as 2nd arg the function to free the content located in rcx
 	call	ft_destroy_elem				; destroy element popped
+	pop		rdi							; recover rdi afte call
+	pop		rsi							; recover rsi afte call
 .nothing_else:
 	pop		rdi							; recover original value of register
 	pop		r8							; recover original value of register
