@@ -36,16 +36,17 @@ int		test_list_search_pos_examples()
 	int		number = 10;
 	int		i;
 
-	// printf(GRN_COL"\nCreate an empty list"RST_COL"\n");
-	// test_list_search_pos(NULL, NULL, strcmp);
+	printf(GRN_COL"\nCreate an empty list"RST_COL"\n");
+	test_list_search_pos(NULL, NULL, strcmp);
 
-	// printf(GRN_COL"\nCreate a list with one node"RST_COL"\n");
-	// ft_list_push_front(&l, "static data");
-	// test_list_search_pos(&l, "", strcmp);
+	printf(GRN_COL"\nCreate a list with one node"RST_COL"\n");
+	ft_list_push_front(&l, "static data");
+	test_list_search_pos(&l, "", strcmp);
+	test_list_search_pos(&l, "z", strcmp);
 
-	// printf(GRN_COL"\nClear the list with one node"RST_COL"\n");
-	// ft_list_remove_if(&l, "", always_equal, NULL);	
-	// test_list_search_pos(&l, "", strcmp);
+	printf(GRN_COL"\nClear the list with one node"RST_COL"\n");
+	ft_list_remove_if(&l, "", always_equal, NULL);	
+	test_list_search_pos(&l, "", strcmp);
 
 	printf(GRN_COL"\nCreate a list with %d nodes"RST_COL"\n", number);
 	for (i = number - 1; i >= 0; i--)
