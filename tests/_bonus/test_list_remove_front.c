@@ -55,7 +55,7 @@ int		test_list_remove_front_examples()
 	ft_list_push_front(&l, "static data");
 	test_list_remove_front(&l, NULL);
 
-	printf(GRN_COL"Create a list with %d node"RST_COL"\n", number);
+	printf(GRN_COL"Create a list with %d nodes"RST_COL"\n", number);
 	for (i = 0; i < number; i++)
 	{
 		sprintf(buf, "content of node %d", i);

@@ -26,11 +26,11 @@ int main(void)
 	// test_create_elem(content);
 	// test_list_push_front(&l1, content);
 
-	// test_list_size_examples();
+	test_list_size_examples();
 	// test_destroy_elem_examples();
 	// test_list_pop_examples();
 	// test_list_remove_front_examples();
-	test_list_remove_if_examples();
+	// test_list_remove_if_examples();
 
 	// char buf[128];
 	// (void) hw;

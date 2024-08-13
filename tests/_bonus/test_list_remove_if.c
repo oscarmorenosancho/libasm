@@ -48,7 +48,7 @@ int		test_list_remove_if_examples()
 	test_list_remove_if(&l, "A", strcmp, NULL);
 	test_list_remove_if(&l, "static data", strcmp, NULL);
 
-	printf(GRN_COL"\nCreate a list with %d node"RST_COL"\n", number);
+	printf(GRN_COL"\nCreate a list with %d nodes"RST_COL"\n", number);
 	for (i = 0; i < number; i++)
 	{
 		sprintf(buf, "content of node %d", i);
