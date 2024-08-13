@@ -64,17 +64,49 @@ ft_list_search_pos:
 ; RDI	contains begin list
 ; RSI	function pointer to compare node
 ; RAX	return not used
+; local variables saved
+; [rsp + 16]	popped node data
+; [rsp + 8]		popped node
+; [rsp]			termporary destination list
 ft_list_sort:
+	cmp		rdi, 0					; if begin list is NULL
+	je		.end						
 	push	rdx
-	xor		rax, rax					; set to 0 by xoring with itself
+	push	rsi
+	push	rdi
+	push	rbp
+	mov		rbp, rsp
+	sub		rsp, 24					; reserve 24 bytes for local variables 
+	mov		QWORD [rsp + 8], 0		; init popped node to null
+	mov		QWORD [rsp], 0			; init destination with an empty list
 .loop:
-	mov		dl, BYTE [rsi + rax]
-	mov		BYTE [rdi + rax], dl
-	cmp		dl, 0
-	je		.end
-	inc		rax
+	; pop from destination list while there is a node
+	call	ft_list_pop_front		; rdi already begin list points rest o list
+	cmp		rax, 0					; if return by pop 0 no more
+	je		.break_loop
+	mov		QWORD [rsp + 8], rax	; save popped node on its local var
+	mov		rax, [rax]				; derreference node content into rda
+	mov		QWORD [rsp + 16], rax	; save popped node content on its local var
+	
+	; search the list position where has to be inserted the popped node
+	mov		rdi, QWORD [rsp]		; recover temp destination list from stack
+	mov		rsi, QWORD [rsp + 16]	; recover popped node content from stack
+	mov		rdx, QWORD [rbp + 16]   ; recover original rsi from stack (cmp) into rdx
+	call	ft_list_search_pos
+
+	; push this node at front of the position list found
+	mov		rdi, rax				; list where to insert node 
+	mov		rsi, QWORD [rsp + 8]	; recover popped node from stack
+	call	ft_list_push_front
+
 	jmp		.loop
-.end:
-	mov		rax, rdi
+.break_loop:
+	mov		rax, QWORD [rsp]		; save destination sorted list into rax
+	mov		QWORD [rdi], rax		; save it as the resut list
+	mov		rsp, rbp
+	pop		rbp
+	pop		rdi
+	pop		rsi
 	pop		rdx
+.end:
     ret
