@@ -8,18 +8,18 @@ section .text                           ; Section to put code
 	extern ft_list_push_front
 	extern ft_list_pop_front
 	extern ft_destroy_elem
-	global ft_search_ins_position
+	global ft_list_search_pos
 	global ft_list_sort                 ; A global label to be declared for the linker ( GNU LD )
 
 
-;t_list **ft_search_position(t_list **begin_list, void *ref_data, int (*cmp)());
+;t_list **ft_list_search_pos(t_list **begin_list, void *ref_data, int (*cmp)());
 ; RDI	contains begin list
 ; RSI	reference data to compare
 ; RDX	function pointer to compare node
 ; RAX	return the first list in list where the front node content is\
 			greater then the ref_data according to the comparison funct \
 			or NULL if begin_list is NULL
-ft_search_position:
+ft_list_search_pos:
 	mov		rax, rdi					; init rax with begin_list
 	cmp		rax, 0						; if begin list is NULL
 	jne		.end						

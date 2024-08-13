@@ -6,14 +6,16 @@
 #include <tests_bonus.h>
 #include <string.h>
 
-int		test_list_size(t_list *begin_list)
+int test_list_search_pos(t_list **begin_list, void *ref_data, int (*cmp)())
 {
-	size_t	count;
-	printf(GRN_COL"Using ft_list_size for args list begin: %p\n"RST_COL, begin_list);
-	count = ft_list_size(begin_list);
-	printf("\tafter calling ft_list_size, size is %zu\n", count);
+	t_list	**lr;
+	printf(GRN_COL"Using ft_list_search_pos for args list begin: %p\n"RST_COL, begin_list);
+	printf(GRN_COL"ref_data: \"%s\" cmp: %p\n"RST_COL, (char*)ref_data, cmp);
+	lr = ft_list_search_pos(begin_list, ref_data, cmp);
+	printf("\tafter calling ft_list_search_pos, front list to insert %p\n", lr);
 	return (0);
 }
+
 static int		always_equal(const char *s1, const char *s2)
 {
 	(void)s1;
@@ -21,7 +23,7 @@ static int		always_equal(const char *s1, const char *s2)
 	return (0);
 }
 
-int		test_list_size_examples()
+int		test_list_search_pos_examples()
 {
 	t_list	*l = NULL;
 	char	buf[128];
@@ -32,15 +34,16 @@ int		test_list_size_examples()
 	test_list_size(NULL);
 
 	printf(GRN_COL"\nCreate an empty list"RST_COL"\n");
-	test_list_size(NULL);
+	test_list_search_pos(NULL, NULL, strcmp);
 
 	printf(GRN_COL"\nCreate a list with one node"RST_COL"\n");
 	ft_list_push_front(&l, "static data");
-	test_list_size(l);
+	test_list_search_pos(&l, "", strcmp);
+
 	printf(GRN_COL"\nClear the list with one node"RST_COL"\n");
 	// ft_list_remove_front(&l, NULL);
-	ft_list_remove_if(&l, NULL, always_equal, NULL);	
-	test_list_size(l);
+	ft_list_remove_if(&l, "", always_equal, NULL);	
+	test_list_search_pos(&l, "", strcmp);
 
 	printf(GRN_COL"\nCreate a list with %d nodes"RST_COL"\n", number);
 	for (i = 0; i < number; i++)
@@ -49,12 +52,13 @@ int		test_list_size_examples()
 		content = strdup(buf);
 		ft_list_push_front(&l, content);
 	}
-	test_list_size(l);
-	// for (i = 0; i < number; i++)
-	// 	ft_list_remove_front(&l, free);
-	ft_list_remove_if(&l, NULL, always_equal, free);	
+	for (i = 0; i < number; i++)
+	{
+		sprintf(buf, "content of node %d", i);
+		test_list_search_pos(&l, buf, strcmp);
+	}
 	printf(GRN_COL"\nClear the list with %d nodes"RST_COL"\n", number);
-	test_list_size(l);
+	ft_list_remove_if(&l, NULL, always_equal, free);	
 	return	(0);
 
 }
