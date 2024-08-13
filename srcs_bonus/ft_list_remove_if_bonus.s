@@ -9,6 +9,7 @@ section .text                           ; Section to put code
 	extern free
 	global ft_destroy_elem
 	global ft_list_pop_front
+	global ft_list_remove_front
 	global ft_list_remove_if                       ; A global label to be declared for the linker ( GNU LD )
 
 ; void	ft_destroy_elem(t_list *node, void (*free_fct)(void *));
@@ -17,7 +18,7 @@ section .text                           ; Section to put code
 ; RAX	return not used
 ft_destroy_elem:
 	cmp		rdi, 0						; if node is NULL
-	je		.end						; just end (can't do enything to nothing)
+	je		.end						; just end (can't do anything to nothing)
 	cmp		rsi, 0						; if free_fct is NULL
 	je		.content_freed				; there no way to free the content
 	cmp		qword [rdi], 0				; if content of node is null
@@ -38,16 +39,36 @@ ft_list_pop_front:
 	push	rsi							; save register to recover it
 	xor		rax, rax
 	cmp		rdi, 0						; if begin list is NULL
-	je		.end						; just end (can't do enything to nowhere)
+	je		.end						; just end (can't do anything to nowhere)
 	cmp		qword [rdi], 0				; if begin list is empty
-	je		.end						; just end (can't do enything to nowhere)
+	je		.end						; just end (can't do anything to nowhere)
 	mov		rax, qword [rdi]					; get first node of list into rax
 	cmp		rax, 0						; if first node doesn't exist 
 	je		.end						; nothing more to do just leave
 	mov		rsi, qword [rax + 8]		; get next pointer of first node
-	mov		qword [rdi], rsi					; set begin list to next node
+	mov		qword [rdi], rsi			; set begin list to next node
 .end:
 	pop		rsi							; recover register to its original value
+	ret
+
+;void	ft_list_remove_front(t_list **begin_list, void (*free_fct)(void *));
+;RDI	contains pointer begin list
+;RSI	function pointer to free content
+;RAX	return not used
+ft_list_remove_front:
+	cmp		rdi, 0						; if begin list is NULL
+	je		.end						; just end (can't do anything to nowhere);
+	push	rsi
+	push	rdi
+	call	ft_list_pop_front			; pop front node of list;
+	cmp		rax, 0
+	je		.nothing_popped
+	mov		rdi, rax					; set node to destroy as 1st arg, 2nd arg already in place
+	call	ft_destroy_elem				; destroy element popped
+.nothing_popped:
+	pop		rdi
+	pop		rsi
+.end:
 	ret
 
 ;void	ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)(),
@@ -61,10 +82,12 @@ ft_list_pop_front:
 ;RAX	return not used
 ft_list_remove_if:
 	cmp		rdi, 0						; if begin list is NULL
-	je		.end						; just end (can't do enything to nowhere);
+	je		.end						; just end (can't do anything to nowhere);
 	cmp		rdx, 0						; if can't compare don't know what to do
 	je		.end						; just end (can't do enything to nowhere)
 	push	r8							; save register to recover it later
+	push	rdx							; save register to recover it later
+	push	rcx							; save register to recover it later
 	push	rdi							; save register to recover it later
 	mov		r8, [rdi]					; dereference pointer to begin node
 	cmp		r8, 0						; if node doesn't exist, nothing else to do
@@ -72,32 +95,18 @@ ft_list_remove_if:
 	mov		rdi, r8						; else place next pointer pointer to rdi
 	add		rdi, 8						; .next is up 8 bytes from node start
 	call	ft_list_remove_if			; and recurse the list pointed by next
-	push	r8
-	push	rcx
-	push	rdx
-	push	rsi
-	push	rdi
 	mov		rdi, [r8]					; 1st arg is node content
+	mov		rdx, [rsp + 16]				; recover original value of rdx from stack to rdx
 	call	rdx							; call cmp to see if this node must be removed
-	pop		rdi
-	pop		rsi
-	pop		rdx
-	pop		rcx
-	pop		r8
 	cmp		rax, 0						; if cmp doesn't give 0
 	jne		.nothing_else				; no need to remove node
-	call	ft_list_pop_front			; pop front node of list;
-	cmp		rax, 0						; if pop return NULL, no node to destroy
-	je		.nothing_else				; so nothing else
-	push	rsi							; save rsi to recover afte call
-	push	rdi							; save rdi to recover afte call
-	mov		rdi, rax					; set node to destroy as 1st arg
-	mov		rsi, rcx					; give as 2nd arg the function to free the content located in rcx
-	call	ft_destroy_elem				; destroy element popped
-	pop		rdi							; recover rdi afte call
-	pop		rsi							; recover rsi afte call
+	mov		rdi, [rsp]					; recover original value of rdi from stack
+	mov		rsi, [rsp + 8]				; recover original value of rcx from stack to rsi
+	call	ft_list_remove_front
 .nothing_else:
 	pop		rdi							; recover original value of register
+	pop		rcx							; recover original value of register
+	pop		rdx							; recover original value of register
 	pop		r8							; recover original value of register
 .end:
     ret
