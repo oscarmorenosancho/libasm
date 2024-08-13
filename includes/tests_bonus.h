@@ -19,8 +19,8 @@ int 	test_list_sort(t_list **begin_list, int (*cmp)());
 int		test_destroy_elem(t_list *node, void (*free_fct)(void *));
 int		test_list_pop_front(t_list **begin_list, int free_cont);
 int		test_list_remove_front(t_list **begin_list, void (*free_fct)(void *));
-int		test_list_search_pos(t_list **begin_list, void *ref_data, int (*cmp)());
-int		test_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)(),\
+int		test_list_search_pos(t_list **begin_list, char *data_ref, int (*cmp)());
+int		test_list_remove_if(t_list **begin_list, char *data_ref, int (*cmp)(),\
 							void (*free_fct)(void *));
 int		test_validate_base_examples();
 int		test_trim_spaces_examples();

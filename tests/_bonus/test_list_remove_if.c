@@ -6,7 +6,7 @@
 #include <tests_bonus.h>
 #include <string.h>
 
-int		test_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)(),\
+int		test_list_remove_if(t_list **begin_list, char *data_ref, int (*cmp)(),\
 							void (*free_fct)(void *))
 {
 	// t_list *node;
@@ -19,7 +19,7 @@ int		test_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)(),\
 		printf("Before call, the size of list is: %d\n", ft_list_size(*begin_list));
 	}
 	printf(GRN_COL"Using ft_list_remove_if"RST_COL"\n");
-	printf(GRN_COL"\tTest to remove an element from a list when equals data ref: \"%s\""RST_COL"\n", (char*)data_ref);
+	printf(GRN_COL"\tTest to remove an element from a list when equals data ref: \"%s\""RST_COL"\n", data_ref);
 	ft_list_remove_if(begin_list, data_ref, cmp, free_fct);
 	if (begin_list)
 		printf("\tAfter call, the size of list is: %d\n", ft_list_size(*begin_list));

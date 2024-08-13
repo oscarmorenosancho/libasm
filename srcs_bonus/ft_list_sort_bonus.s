@@ -28,15 +28,17 @@ ft_list_search_pos:
 	push	rdx
 	push	rsi
 	push	rdi
-	push	rbp
-	mov		rbp, rsp
-	sub		rsp, 0						;reserve 0 bytes for local variables
+	;push	rbp
+	;mov		rbp, rsp
+	;sub		rsp, 0						;reserve 0 bytes for local variables
 .loop:
 	mov		rcx, QWORD [rax]				; get first node of list into rcx
 	cmp		rcx, 0						; if node is NULL
 	jne		.break_loop
-	mov		rdx, QWORD [rbp + 24]				; recover original value of rdx form the stack (cmp)
-	mov		rsi, QWORD [rbp + 16]				; recover original value of rsi form the stack (ref_data)
+	;mov		rdx, QWORD [rbp + 24]				; recover original value of rdx form the stack (cmp)
+	;mov		rsi, QWORD [rbp + 16]				; recover original value of rsi form the stack (ref_data)
+	mov		rdx, QWORD [rbp + 16]				; recover original value of rdx form the stack (cmp)
+	mov		rsi, QWORD [rbp + 8]				; recover original value of rsi form the stack (ref_data)
 	mov		rdi, QWORD [rcx]					; obtain data from node to compare
 	push	rcx
 	push	rax
@@ -45,13 +47,13 @@ ft_list_search_pos:
 	pop		rax							; recover rax where the cur list is 
 	pop		rcx							; recover rcx node
 	cmp		rdi, 0
-	jl		.break_loop
+	jg		.break_loop
 	mov		rax, rcx					; set the cur list head to next in node
 	add		rax, 8						; set the cur list head to next in node
 	jmp		.loop
 .break_loop:
-	mov		rsp, rbp
-	pop		rbp
+	;mov		rsp, rbp
+	;pop		rbp
 	pop		rdx
 	pop		rsi
 	pop		rdi

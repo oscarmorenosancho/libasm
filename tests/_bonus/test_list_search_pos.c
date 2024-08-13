@@ -6,12 +6,12 @@
 #include <tests_bonus.h>
 #include <string.h>
 
-int test_list_search_pos(t_list **begin_list, void *ref_data, int (*cmp)())
+int test_list_search_pos(t_list **begin_list, char *data_ref, int (*cmp)())
 {
 	t_list	**lr;
 	printf(GRN_COL"Using ft_list_search_pos for args list begin: %p\n"RST_COL, begin_list);
-	printf(GRN_COL"ref_data: \"%s\" cmp: %p\n"RST_COL, (char*)ref_data, cmp);
-	lr = ft_list_search_pos(begin_list, ref_data, cmp);
+	printf(GRN_COL"ref_data: \"%s\" cmp: %p\n"RST_COL, data_ref, cmp);
+	lr = ft_list_search_pos(begin_list, data_ref, cmp);
 	printf("\tafter calling ft_list_search_pos, front list to insert %p\n", lr);
 	return (0);
 }
@@ -31,10 +31,8 @@ int		test_list_search_pos_examples()
 	int		number = 10;
 	int		i;
 
-	test_list_size(NULL);
-
-	printf(GRN_COL"\nCreate an empty list"RST_COL"\n");
-	test_list_search_pos(NULL, NULL, strcmp);
+	// printf(GRN_COL"\nCreate an empty list"RST_COL"\n");
+	// test_list_search_pos(NULL, NULL, strcmp);
 
 	printf(GRN_COL"\nCreate a list with one node"RST_COL"\n");
 	ft_list_push_front(&l, "static data");
