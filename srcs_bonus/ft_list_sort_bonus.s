@@ -9,6 +9,7 @@ section .text                           ; Section to put code
 	extern ft_list_pop_front
 	extern ft_destroy_elem
 	global ft_list_search_pos
+	global ft_list_sort_ins
 	global ft_list_sort                 ; A global label to be declared for the linker ( GNU LD )
 
 
@@ -59,6 +60,45 @@ ft_list_search_pos:
 	pop		r8
 .end:
 	ret
+
+
+;t_list **ft_list_sort_ins(t_list **begin_list, t_list *node, int (*cmp)());
+; RDI	contains begin list
+; RSI	node to insert
+; RDX	function pointer to compare node
+; RAX	return not used
+ft_list_sort_ins:
+	cmp		rdi, 0					; if begin list is NULL
+	je		.end						
+	cmp		rsi, 0					; if node is NULL
+	je		.end						
+	push	rdx						; [rbp + 24] (cmp)
+	push	rsi						; [rbp + 16] (node)
+	push	rdi						; [rbp + 8] (list)
+	push	rbp						; [rbp + 0] (prev rbp)
+	mov		rbp, rsp
+	sub		rsp, 0					; reserve 0 bytes for local variables 
+	mov		rsi, [rsi]				; derreference content of node into rsi
+	; search the list position where has to be inserted the popped node
+	; t_list	**ft_list_search_pos(t_list **begin_list, void *ref_data, int (*cmp)());
+	call	ft_list_search_pos
+
+	; push this node at front of the position list found
+	mov		rdi, rax				; list where to insert node (return of search)
+	mov		rsi, QWORD [rbp + 16]	; recover node to insert from stack
+
+	; void	ft_list_push_node_front(t_list **begin_list, t_list *node);
+	call	ft_list_push_node_front
+
+	mov		rsp, rbp
+	pop		rbp
+	pop		rdi
+	pop		rsi
+	pop		rdx
+.end:
+	ret
+
+
 
 ;void 	ft_list_sort(t_list **begin_list, int (*cmp)());
 ; RDI	contains begin list

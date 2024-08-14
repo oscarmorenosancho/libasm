@@ -27,6 +27,8 @@ int		test_list_remove_front(t_list **begin_list, void (*free_fct)(void *));
 int		test_list_search_pos(t_list **begin_list, char *data_ref, int (*cmp)());
 int		test_list_remove_if(t_list **begin_list, char *data_ref, int (*cmp)(),\
 							void (*free_fct)(void *));
+
+int		test_list_sort_ins(t_list **begin_list, char *content, int (*cmp)());
 int		test_list_sort(t_list **begin_list, int (*cmp)());
 
 int		test_validate_base_examples();
@@ -42,6 +44,7 @@ int		test_list_pop_front_examples();
 int		test_list_remove_front_examples();
 int		test_list_remove_if_examples();
 int		test_list_search_pos_examples();
+int		test_list_sort_ins_examples();
 int		test_list_sort_examples();
 void	print_list_node(t_list *node);
 void	print_list(t_list *list);

@@ -38,42 +38,44 @@ int main(int argc, char **argv)
 	if (argc == 1 || !ft_strcmp(argv[1], "read"))
 		failed_tests += test_read_examples();
 	if (arg_is_bonus || !ft_strcmp(argv[1], "isspace"))
-		test_isspace();
+		failed_tests += test_isspace();
 	if (arg_is_bonus || !ft_strcmp(argv[1], "count_char"))
-		test_count_char("qwertyQWERTYr YY");
+		failed_tests += test_count_char("qwertyQWERTYr YY");
 	if (arg_is_bonus || !ft_strcmp(argv[1], "get_index"))
-		test_get_index(plain, "qwertyQWERTYP你");
+		failed_tests += test_get_index(plain, "qwertyQWERTYP你");
 	if (arg_is_bonus || !ft_strcmp(argv[1], "validate_base"))
-		test_validate_base_examples();
+		failed_tests += test_validate_base_examples();
 	if (arg_is_bonus || !ft_strcmp(argv[1], "trim_spaces"))
-		test_trim_spaces_examples();
+		failed_tests += test_trim_spaces_examples();
 	if (arg_is_bonus || !ft_strcmp(argv[1], "get_sign"))
-		test_get_sign_examples();
+		failed_tests += test_get_sign_examples();
 	if (arg_is_bonus || !ft_strcmp(argv[1], "atoui_base"))
-		test_atoui_base_examples();
+		failed_tests += test_atoui_base_examples();
 	if (arg_is_bonus || !ft_strcmp(argv[1], "atoi_base"))
-		test_atoi_base_examples();
+		failed_tests += test_atoi_base_examples();
 
 	if (arg_is_bonus || !ft_strcmp(argv[1], "create_elem"))
-		test_create_elem(content);
+		failed_tests += test_create_elem(content);
 	if (arg_is_bonus || !ft_strcmp(argv[1], "push_front"))
-		test_list_push_front_examples();
+		failed_tests += test_list_push_front_examples();
 	if (arg_is_bonus || !ft_strcmp(argv[1], "push_node_front"))
-		test_list_push_node_front_examples();
+		failed_tests += test_list_push_node_front_examples();
 	if (arg_is_bonus || !ft_strcmp(argv[1], "list_size"))
-		test_list_size_examples();
+		failed_tests += test_list_size_examples();
 	if (arg_is_bonus || !ft_strcmp(argv[1], "destroy_elem"))
 		test_destroy_elem_examples();
 	if (arg_is_bonus || !ft_strcmp(argv[1], "list_pop_front"))
-		test_list_pop_front_examples();
+		failed_tests += test_list_pop_front_examples();
 	if (arg_is_bonus || !ft_strcmp(argv[1], "list_remove_front"))
-		test_list_remove_front_examples();
+		failed_tests += test_list_remove_front_examples();
 	if (arg_is_bonus || !ft_strcmp(argv[1], "list_remove_if"))
-		test_list_remove_if_examples();
+		failed_tests += test_list_remove_if_examples();
 	if (arg_is_bonus || !ft_strcmp(argv[1], "list_search_pos"))
-		test_list_search_pos_examples();
-	// if (arg_is_bonus || !ft_strcmp(argv[1], "list_sort"))
-	// 	test_list_sort_examples();
+		failed_tests += test_list_search_pos_examples();
+	if (arg_is_bonus || !ft_strcmp(argv[1], "list_sort_ins"))
+		failed_tests += test_list_sort_ins_examples();
+	if (arg_is_bonus || !ft_strcmp(argv[1], "list_sort"))
+		failed_tests += test_list_sort_examples();
 
 	if (failed_tests > 0)
 	{
