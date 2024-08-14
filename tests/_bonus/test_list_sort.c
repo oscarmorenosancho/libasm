@@ -23,6 +23,8 @@ int		test_list_sort_examples()
 	int		number = 10;
 	int		i;
 
+	print_test_header("ft_list_sort");
+
 	(void)buf;
 	(void)content;
 	(void)number;

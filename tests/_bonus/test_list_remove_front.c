@@ -45,6 +45,7 @@ int		test_list_remove_front_examples()
 	int		number = 10;
 	int		i;
 
+	print_test_header("ft_list_remove_front");
 
 	test_list_remove_front(NULL, NULL);
 

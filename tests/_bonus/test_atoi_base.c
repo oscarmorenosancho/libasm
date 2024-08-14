@@ -21,6 +21,11 @@ int		test_atoi_base_examples()
 	size_t		i;
 	char		*strs[] = {"---15", "---FF", "---+8", "---F", "-", "--15x", "--FFx", "--8+", "--Fx", "--x", NULL};
 
+
+	printf(GRN_COL"\n============================\n"RST_COL);
+	printf(GRN_COL"TEST ft_atoi_base\n"RST_COL);
+	printf(GRN_COL"============================\n"RST_COL);
+
 	i = 0;
 	while (strs[i])
 	{

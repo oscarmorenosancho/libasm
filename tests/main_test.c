@@ -1,50 +1,38 @@
+#include <stdio.h>
+#include <libasm.h>
 #include <tests.h>
-#include <string.h>
 
-static const char *hw = "Hello World!\n";
-static const char *hw2 = "Hello World! to stderr\n";
-static const char *uc = CYN_COL"Some special characters 你好世界!\n"RST_COL;
-static const char *tab = "\ttabulated\n";
-static const char *plain = "Plain text and some special characters 你好世界! to copy";
-
-int main(void)
+int main(int argc, char **argv)
 {
-	char buf[128];
-	(void) hw;
-	(void) hw2;
-	(void) uc;
-	(void) tab;
-	(void) plain;
+	int		failed_tests;
+	char	buf[128];
+	static char	err_msg[] = RED_COL"Error only one argument or none can be used"RST_COL"\n";
 
-	test_strlen(uc);
+	failed_tests = 0;
 
-	test_strcpy(buf, plain);	
-
-	test_strdup(plain);	
-
-	test_strcmp("", "");	
-	test_strcmp("a", "a");	
-	test_strcmp("a", "b");	
-	test_strcmp("b", "a");	
-	test_strcmp("hw2", "hw");	
-	test_strcmp("hw*", "hw");	
-	test_strcmp("hw", "hw*");	
-	test_strcmp(tab, hw);	
-	test_strcmp(hw2, hw);	
-
-	test_write(1, 1, hw, strlen(hw));
-	test_write(2, 2, hw2, strlen(hw2));
-	test_write(1, 1, uc, strlen(uc));
-	test_write(1, 1, tab, strlen(tab));
-	test_write(10, 10, hw, strlen(hw));
-	test_write(1, 1, NULL, 10);
-	test_write(1, 1, hw, 120);
-	test_write(1, 1, "\n", 1);
-
-	test_read(0, 0, buf, 1);
-	test_read(10, 10, buf, 1);
-	test_read(0, 0, NULL, 1);
-
+	if (argc > 2)
+	{
+		ft_write(2, err_msg, ft_strlen(err_msg));
+		return(1);
+	}
+	if (argc == 1 || !ft_strcmp(argv[1], "strlen"))
+		failed_tests += test_strlen_examples();
+	if (argc == 1 || !ft_strcmp(argv[1], "strcpy"))
+		failed_tests += test_strcpy_examples();
+	if (argc == 1 || !ft_strcmp(argv[1], "strdup"))
+		failed_tests += test_strdup_examples();
+	if (argc == 1 || !ft_strcmp(argv[1], "strcmp"))
+		failed_tests += test_strcmp_examples();
+	if (argc == 1 || !ft_strcmp(argv[1], "write"))
+		failed_tests += test_write_examples();
+	if (argc == 1 || !ft_strcmp(argv[1], "read"))
+		failed_tests += test_read_examples();
+	if (failed_tests > 0)
+	{
+		sprintf(buf, RED_COL"FAILED TESTS: %d"RST_COL"\n", failed_tests);
+		ft_write(2, buf, ft_strlen(buf));
+		return (failed_tests);
+	}
 	return (0);
 }
 

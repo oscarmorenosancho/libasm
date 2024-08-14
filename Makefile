@@ -6,7 +6,7 @@
 #    By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/16 15:56:04 by apuchill          #+#    #+#              #
-#    Updated: 2024/08/14 12:30:07 by omoreno-         ###   ########.fr        #
+#    Updated: 2024/08/14 12:51:47 by omoreno-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ BONUS_SRCS	:= ft_atoi_base_bonus.s ft_list_push_front_bonus.s \
 BONUS_OBJS	:= $(patsubst %.s, ${DIR_BONUS_O}/%.o, ${BONUS_SRCS})
 
 TEST_SRCS	:= test_strlen.c test_strcpy.c test_strcmp.c test_strdup.c \
-				test_write.c test_read.c
+				test_write.c test_read.c print_test_header.c
 
 TEST_MSRC	:= main_test.c
 

@@ -35,9 +35,7 @@ int		test_list_push_node_front_examples(void)
 	t_list *l = NULL;
 	t_list *node;
 
-	printf(GRN_COL"\n============================\n"RST_COL);
-	printf(GRN_COL"TEST ft_list_push_node_front\n"RST_COL);
-	printf(GRN_COL"============================\n\n"RST_COL);
+	print_test_header("ft_list_push_node_front");
 
 	printf(GRN_COL"\nCreate a list with one node"RST_COL"\n");
 	ft_list_push_front(&l, "static data");

@@ -20,6 +20,8 @@ int	test_trim_spaces_examples()
 	size_t		i;
 	char		*strs[] = {"  abcde", "abcde", "", " ", " 01", "\t01", NULL};
 
+	print_test_header("ft_trim_spaces");
+
 	test_trim_spaces(NULL);
 	i = 0;
 	while (strs[i])

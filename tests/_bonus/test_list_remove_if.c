@@ -37,6 +37,7 @@ int		test_list_remove_if_examples()
 	int		number = 10;
 	int		i;
 
+	print_test_header("ft_list_remove_if");
 
 	test_list_remove_if(NULL, "A", strcmp, NULL);
 

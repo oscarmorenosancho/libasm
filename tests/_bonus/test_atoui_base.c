@@ -26,6 +26,10 @@ int		test_atoui_base_examples()
 							"15x", "FFx", "8x",
 							"Fx", "x", NULL };
 
+	printf(GRN_COL"\n============================\n"RST_COL);
+	printf(GRN_COL"TEST ft_atoui_base\n"RST_COL);
+	printf(GRN_COL"============================\n"RST_COL);
+
 	i = 0;
 	while (strs[i])
 	{

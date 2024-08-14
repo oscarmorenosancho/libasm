@@ -33,6 +33,9 @@ int		test_list_pop_examples()
 	int		number = 10;
 	int		i;
 
+	printf(GRN_COL"\n============================\n"RST_COL);
+	printf(GRN_COL"TEST ft_list_pop\n"RST_COL);
+	printf(GRN_COL"============================\n"RST_COL);
 
 	printf(GRN_COL"Test to pop an element from NULL"RST_COL"\n");
 	test_list_pop_front(NULL, 0);

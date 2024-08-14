@@ -23,6 +23,10 @@ int		test_list_size_examples()
 	int		number = 10;
 	int		i;
 
+	printf(GRN_COL"\n============================\n"RST_COL);
+	printf(GRN_COL"TEST ft_list_size\n"RST_COL);
+	printf(GRN_COL"============================\n"RST_COL);
+
 	test_list_size(NULL);
 
 	printf(GRN_COL"\nCreate an empty list"RST_COL"\n");

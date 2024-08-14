@@ -24,6 +24,10 @@ int	test_get_sign_examples()
 	size_t		i;
 	char		*strs[] = {"++", "--", "---", "---- +", "", " ", "++8BF", "--8+", "-----U", "8", NULL};
 
+	printf(GRN_COL"\n============================\n"RST_COL);
+	printf(GRN_COL"TEST ft_get_sign\n"RST_COL);
+	printf(GRN_COL"============================\n"RST_COL);
+
 	i = 0;
 	while (strs[i])
 	{

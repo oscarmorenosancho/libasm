@@ -21,6 +21,10 @@ int		test_destroy_elem_examples()
 	t_list	*node;
 	char	*content;
 
+	printf(GRN_COL"\n============================\n"RST_COL);
+	printf(GRN_COL"TEST ft_destroy_elem\n"RST_COL);
+	printf(GRN_COL"============================\n"RST_COL);
+
 	(void)node;
 	(void)content;
 	printf(GRN_COL"Test to destroy a NULL node"RST_COL);

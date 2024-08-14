@@ -17,6 +17,8 @@ int	test_validate_base(const char *base)
 
 int	test_validate_base_examples()
 {
+	print_test_header("ft_validate_base");
+
 	test_validate_base("01");
 	test_validate_base("0123456789");
 	test_validate_base("0123456789abcdef");
