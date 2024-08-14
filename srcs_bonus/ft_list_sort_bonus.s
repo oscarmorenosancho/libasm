@@ -80,14 +80,14 @@ ft_list_sort_ins:
 	sub		rsp, 0					; reserve 0 bytes for local variables 
 	mov		rsi, [rsi]				; derreference content of node into rsi
 	; search the list position where has to be inserted the popped node
-	; t_list	**ft_list_search_pos(t_list **begin_list, void *ref_data, int (*cmp)());
+	; t_list **ft_list_search_pos(t_list **begin_list, void *ref_data, int (*cmp)());
 	call	ft_list_search_pos
 
 	; push this node at front of the position list found
 	mov		rdi, rax				; list where to insert node (return of search)
 	mov		rsi, QWORD [rbp + 16]	; recover node to insert from stack
 
-	; void	ft_list_push_node_front(t_list **begin_list, t_list *node);
+	; void ft_list_push_node_front(t_list **begin_list, t_list *node);
 	call	ft_list_push_node_front
 
 	mov		rsp, rbp
@@ -111,33 +111,37 @@ ft_list_sort_ins:
 ft_list_sort:
 	cmp		rdi, 0					; if begin list is NULL
 	je		.end						
-	push	rdx
-	push	rsi
-	push	rdi
-	push	rbp
+	push	rdx						; [rbp + 24] (cmp)
+	push	rsi						; [rbp + 16] (node)
+	push	rdi						; [rbp + 8] (list)
+	push	rbp						; [rbp + 0] (prev rbp)
 	mov		rbp, rsp
 	sub		rsp, 24					; reserve 24 bytes for local variables 
 	mov		QWORD [rsp + 8], 0		; init popped node to null
 	mov		QWORD [rsp], 0			; init destination with an empty list
 .loop:
 	; pop from destination list while there is a node
+	;t_list	*ft_list_pop_front(t_list **begin_list);
 	call	ft_list_pop_front		; rdi already begin list points rest o list
-	cmp		rax, 0					; if return by pop 0 no more
+	cmp		rax, 0					; if return by pop NULL no more nodes
 	je		.break_loop
-	mov		QWORD [rsp + 8], rax	; save popped node on its local var
-	mov		rax, [rax]				; derreference node content into rda
-	mov		QWORD [rsp + 16], rax	; save popped node content on its local var
-	
+
+	mov		rdi, rsp					; destination list is stored 
+	mov		rsi, rax    				; node to insert (return from pop)
+	mov		rdx, [rbp + 24]				; recover cmp from stack
+	;t_list **ft_list_sort_ins(t_list **begin_list, t_list *node, int (*cmp)());
+	call	ft_list_sort_ins
+
 	; search the list position where has to be inserted the popped node
-	mov		rdi, rsp				; top stack is the location of destination list
-	mov		rsi, QWORD [rsp + 16]	; recover popped node content from stack
-	mov		rdx, QWORD [rbp + 16]   ; recover original rsi from stack (cmp) into rdx
-	call	ft_list_search_pos
+	;mov		rdi, rsp				; top stack is the local of destination list
+	;mov		rsi, QWORD [rsp + 16]	; recover popped node content from stack
+	;mov		rdx, QWORD [rbp + 16]   ; recover original rsi from stack (cmp) into rdx
+	;call	ft_list_search_pos
 
 	; push this node at front of the position list found
-	mov		rdi, rax				; list where to insert node 
-	mov		rsi, QWORD [rsp + 8]	; recover popped node from stack
-	call	ft_list_push_node_front
+	;mov		rdi, rax				; list where to insert node 
+	;mov		rsi, QWORD [rsp + 8]	; recover popped node from stack
+	;call	ft_list_push_node_front
 
 	jmp		.loop
 .break_loop:
