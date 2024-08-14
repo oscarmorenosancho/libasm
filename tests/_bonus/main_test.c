@@ -56,9 +56,9 @@ int main(int argc, char **argv)
 
 	if (arg_is_bonus || !ft_strcmp(argv[1], "create_elem"))
 		failed_tests += test_create_elem(content);
-	if (arg_is_bonus || !ft_strcmp(argv[1], "push_front"))
+	if (arg_is_bonus || !ft_strcmp(argv[1], "list_push_front"))
 		failed_tests += test_list_push_front_examples();
-	if (arg_is_bonus || !ft_strcmp(argv[1], "push_node_front"))
+	if (arg_is_bonus || !ft_strcmp(argv[1], "list_push_node_front"))
 		failed_tests += test_list_push_node_front_examples();
 	if (arg_is_bonus || !ft_strcmp(argv[1], "list_size"))
 		failed_tests += test_list_size_examples();

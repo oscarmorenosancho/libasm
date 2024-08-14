@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <libasm.h>
 #include <libasm_bonus.h>
 #include <tests.h>
@@ -22,6 +23,7 @@ int		test_list_sort_examples()
 	char	*content;
 	int		number = 10;
 	int		i;
+	int		off[] = {5, 7, 1, 4, 6, 3, 0, 9, 8, 2};
 
 	print_test_header("ft_list_sort");
 
@@ -38,26 +40,28 @@ int		test_list_sort_examples()
 	printf(GRN_COL"\nCreate a list with one node"RST_COL"\n");
 	ft_list_push_front(&l, "static data");
 	print_list(l);
+
 	test_list_sort(&l, ft_greater);
+	print_list(l);
 
 	printf(GRN_COL"\nClear the list with one node"RST_COL"\n");
 	ft_list_remove_if(&l, NULL, ft_always_equal, NULL);	
-	test_list_sort(&l, ft_greater);
+	print_list(l);
 
-	// printf(GRN_COL"\nCreate a list with %d nodes"RST_COL"\n", number);
-	// for (i = 0; i < number; i++)
-	// {
-	// 	sprintf(buf, "%05d", i);
-	// 	content = strdup(buf);
-	// 	ft_list_push_front(&l, content);
-	// 	printf(GRN_COL"\tpush node %p, data:\"%s\", next:%p"RST_COL"\n", l, (char*)l->data, l->next);
-	// }
-	// print_list(l);
-	// test_list_sort(&l, strcmp);
+	printf(GRN_COL"\nCreate a list with %d nodes"RST_COL"\n", number);
+	for (i = 0; i < number; i++)
+	{
+		sprintf(buf, "content of node %05d", off[i] * 10 + i);
+		content = strdup(buf);
+		ft_list_push_front(&l, content);
+		printf(GRN_COL"\tpush node %p, data:\"%s\", next:%p"RST_COL"\n", l, (char*)l->data, l->next);
+	}
+	print_list(l);
+	test_list_sort(&l, strcmp);
 
-	// printf(GRN_COL"\nClear the list with %d nodes"RST_COL"\n", number);
-	// ft_list_remove_if(&l, NULL, ft_always_equal, free);	
-	// print_list(l);
+	printf(GRN_COL"\nClear the list with %d nodes"RST_COL"\n", number);
+	ft_list_remove_if(&l, NULL, ft_always_equal, free);	
+	print_list(l);
 
 	return	(0);
 

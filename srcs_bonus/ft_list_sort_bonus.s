@@ -128,9 +128,9 @@ ft_list_sort:
 
 	mov		rdi, rsp					; destination list is stored 
 	mov		rsi, rax    				; node to insert (return from pop)
-	mov		rdx, [rbp + 24]				; recover cmp from stack
+	;mov		rdx, [rbp + 24]				; recover cmp from stack
 	;t_list **ft_list_sort_ins(t_list **begin_list, t_list *node, int (*cmp)());
-	call	ft_list_sort_ins
+	;call	ft_list_sort_ins
 
 	; search the list position where has to be inserted the popped node
 	;mov		rdi, rsp				; top stack is the local of destination list
