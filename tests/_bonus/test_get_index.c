@@ -11,6 +11,8 @@ int	test_get_index(const char *ts, const char *qs)
 	size_t	len;
 	size_t	i;
 
+	print_test_header("ft_get_index");
+
 	len = ft_strlen(qs);
 
 	printf(GRN_COL"\nUsing string \"%s\""RST_COL"\n", ts);

@@ -25,7 +25,7 @@ int		test_list_pop_front(t_list **begin_list, int free_cont)
 }
 
 
-int		test_list_pop_examples()
+int		test_list_pop_front_examples()
 {
 	t_list	*l = NULL;
 	char	buf[128];
@@ -33,9 +33,7 @@ int		test_list_pop_examples()
 	int		number = 10;
 	int		i;
 
-	printf(GRN_COL"\n============================\n"RST_COL);
-	printf(GRN_COL"TEST ft_list_pop\n"RST_COL);
-	printf(GRN_COL"============================\n"RST_COL);
+	print_test_header("ft_list_pop_front");
 
 	printf(GRN_COL"Test to pop an element from NULL"RST_COL"\n");
 	test_list_pop_front(NULL, 0);

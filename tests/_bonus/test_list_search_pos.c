@@ -29,6 +29,8 @@ int		test_list_search_pos_examples()
 	int		number = 10;
 	int		i;
 
+	print_test_header("ft_list_search_pos");
+
 	printf(GRN_COL"\nCreate an empty list"RST_COL"\n");
 	test_list_search_pos(NULL, NULL, strcmp);
 

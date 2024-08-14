@@ -23,9 +23,8 @@ int		test_list_size_examples()
 	int		number = 10;
 	int		i;
 
-	printf(GRN_COL"\n============================\n"RST_COL);
-	printf(GRN_COL"TEST ft_list_size\n"RST_COL);
-	printf(GRN_COL"============================\n"RST_COL);
+
+	print_test_header("ft_list_size");
 
 	test_list_size(NULL);
 

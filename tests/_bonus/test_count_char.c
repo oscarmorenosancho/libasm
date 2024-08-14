@@ -11,6 +11,8 @@ int	test_count_char(const char *ts)
 	size_t	len;
 	size_t	i;
 
+	print_test_header("ft_count_char");
+
 	len = ft_strlen(ts);
 
 	printf(GRN_COL"\nUsing string \"%s\""RST_COL"\n", ts);

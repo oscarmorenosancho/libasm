@@ -10,6 +10,8 @@ int		test_create_elem(char *data)
 {
 	t_list	*n1;
 
+	print_test_header("ft_create_elem");
+
 	printf(GRN_COL"\tUsing ft_create_elem for arg \'%s\'\n"RST_COL, data);
 	n1 = ft_create_elem(data);
 	if (n1)

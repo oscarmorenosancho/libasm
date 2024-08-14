@@ -38,7 +38,7 @@ int		test_list_push_front_examples();
 int		test_list_push_node_front_examples();
 int		test_list_size_examples();
 int		test_destroy_elem_examples();
-int		test_list_pop_examples();
+int		test_list_pop_front_examples();
 int		test_list_remove_front_examples();
 int		test_list_remove_if_examples();
 int		test_list_search_pos_examples();

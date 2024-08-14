@@ -21,9 +21,7 @@ int		test_destroy_elem_examples()
 	t_list	*node;
 	char	*content;
 
-	printf(GRN_COL"\n============================\n"RST_COL);
-	printf(GRN_COL"TEST ft_destroy_elem\n"RST_COL);
-	printf(GRN_COL"============================\n"RST_COL);
+	print_test_header("ft_destroy_elem");
 
 	(void)node;
 	(void)content;

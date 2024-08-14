@@ -12,6 +12,8 @@ int	test_isspace()
 	size_t	i;
 	char	ts[] = "\rs \t\n";
 
+	print_test_header("ft_isspace");
+
 	len = ft_strlen(ts);
 
 	for (i = 0; i < len; i++)
