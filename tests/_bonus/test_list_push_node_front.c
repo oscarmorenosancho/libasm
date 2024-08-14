@@ -35,6 +35,10 @@ int		test_list_push_node_front_examples(void)
 	t_list *l = NULL;
 	t_list *node;
 
+	printf(GRN_COL"\n============================\n"RST_COL);
+	printf(GRN_COL"TEST ft_list_push_node_front\n"RST_COL);
+	printf(GRN_COL"============================\n\n"RST_COL);
+
 	printf(GRN_COL"\nCreate a list with one node"RST_COL"\n");
 	ft_list_push_front(&l, "static data");
 	print_list(l);
@@ -46,5 +50,10 @@ int		test_list_push_node_front_examples(void)
 	printf(GRN_COL"\nPush the node: %p"RST_COL"\n", node);
 	ft_list_push_node_front(&l, node);
 	print_list(l);
+
+	ft_list_remove_if(&l, NULL, ft_always_equal, NULL);	
+	printf(GRN_COL"\nClear the list"RST_COL"\n");
+	print_list(l);
+
 	return (0);
 }

@@ -14,12 +14,6 @@ int		test_list_size(t_list *begin_list)
 	printf("\tafter calling ft_list_size, size is %zu\n", count);
 	return (0);
 }
-static int		always_equal(const char *s1, const char *s2)
-{
-	(void)s1;
-	(void)s2;
-	return (0);
-}
 
 int		test_list_size_examples()
 {
@@ -39,7 +33,7 @@ int		test_list_size_examples()
 	test_list_size(l);
 	printf(GRN_COL"\nClear the list with one node"RST_COL"\n");
 	// ft_list_remove_front(&l, NULL);
-	ft_list_remove_if(&l, NULL, always_equal, NULL);	
+	ft_list_remove_if(&l, NULL, ft_always_equal, NULL);	
 	test_list_size(l);
 
 	printf(GRN_COL"\nCreate a list with %d nodes"RST_COL"\n", number);
@@ -52,7 +46,7 @@ int		test_list_size_examples()
 	test_list_size(l);
 	// for (i = 0; i < number; i++)
 	// 	ft_list_remove_front(&l, free);
-	ft_list_remove_if(&l, NULL, always_equal, free);	
+	ft_list_remove_if(&l, NULL, ft_always_equal, free);	
 	printf(GRN_COL"\nClear the list with %d nodes"RST_COL"\n", number);
 	test_list_size(l);
 	return	(0);

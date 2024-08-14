@@ -4,6 +4,10 @@
 #include <sys/types.h>
 #include <libasm_bonus.h>
 
+int		ft_always_equal(const char *s1, const char *s2);
+int		ft_greater(const char *s1, const char *s2);
+int		ft_lesser(const char *s1, const char *s2);
+
 int		test_isspace();
 int		test_count_char(const char *ts);
 int		test_get_index(const char *ts, const char *qs);
@@ -30,6 +34,7 @@ int		test_trim_spaces_examples();
 int		test_get_sign_examples();
 int		test_atoui_base_examples();
 int		test_atoi_base_examples();
+int		test_list_push_front_examples();
 int		test_list_push_node_front_examples();
 int		test_list_size_examples();
 int		test_destroy_elem_examples();

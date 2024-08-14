@@ -21,13 +21,6 @@ int test_list_search_pos(t_list **begin_list, char *data_ref, int (*cmp)())
 	return (0);
 }
 
-static int		always_equal(const char *s1, const char *s2)
-{
-	(void)s1;
-	(void)s2;
-	return (0);
-}
-
 int		test_list_search_pos_examples()
 {
 	t_list	*l = NULL;
@@ -45,7 +38,7 @@ int		test_list_search_pos_examples()
 	test_list_search_pos(&l, "z", strcmp);
 
 	printf(GRN_COL"\nClear the list with one node"RST_COL"\n");
-	ft_list_remove_if(&l, "", always_equal, NULL);	
+	ft_list_remove_if(&l, "", ft_always_equal, NULL);	
 	test_list_search_pos(&l, "", strcmp);
 
 	printf(GRN_COL"\nCreate a list with %d nodes"RST_COL"\n", number);
@@ -62,7 +55,7 @@ int		test_list_search_pos_examples()
 		test_list_search_pos(&l, buf, strcmp);
 	}
 	printf(GRN_COL"\nClear the list with %d nodes"RST_COL"\n", number);
-	ft_list_remove_if(&l, NULL, always_equal, free);	
+	ft_list_remove_if(&l, NULL, ft_always_equal, free);	
 	return	(0);
 
 }

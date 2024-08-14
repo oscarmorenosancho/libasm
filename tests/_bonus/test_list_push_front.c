@@ -6,8 +6,19 @@
 #include <tests_bonus.h>
 #include <string.h>
 
+static int		always_equal(const char *s1, const char *s2)
+{
+	(void)s1;
+	(void)s2;
+	return (0);
+}
 int		test_list_push_front(t_list **begin_list, char *data)
 {
+	printf(GRN_COL"=======================\n"RST_COL);
+	printf(GRN_COL"TEST ft_list_push_front\n"RST_COL);
+	printf(GRN_COL"=======================\n\n"RST_COL);
+
+
 	printf(GRN_COL"Using ft_list_push_front for args list begin: %p  \'%s\'\n"RST_COL, begin_list, data);
 	if (begin_list)
 	{
@@ -28,3 +39,25 @@ int		test_list_push_front(t_list **begin_list, char *data)
 	return (0);
 }
 
+int		test_list_push_front_examples(void)
+{
+	t_list *l = NULL;
+
+	printf(GRN_COL"\n============================\n"RST_COL);
+	printf(GRN_COL"TEST ft_list_push_front\n"RST_COL);
+	printf(GRN_COL"============================\n"RST_COL);
+
+	printf(GRN_COL"\nCreate a list with one node"RST_COL"\n");
+	ft_list_push_front(&l, "static data");
+	print_list(l);
+
+	printf(GRN_COL"\nPush another node to list"RST_COL"\n");
+	ft_list_push_front(&l, "static data 2");
+	print_list(l);
+
+	ft_list_remove_if(&l, NULL, always_equal, NULL);	
+	printf(GRN_COL"\nClear the list"RST_COL"\n");
+
+	print_list(l);
+	return (0);
+}

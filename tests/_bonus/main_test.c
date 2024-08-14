@@ -24,8 +24,7 @@ int main(void)
 	// test_atoi_base_examples();
 
 	// test_create_elem(content);
-	// test_list_push_front(&l1, content);
-
+	test_list_push_front_examples();
 	test_list_push_node_front_examples();
 	// test_list_size_examples();
 	// test_destroy_elem_examples();
