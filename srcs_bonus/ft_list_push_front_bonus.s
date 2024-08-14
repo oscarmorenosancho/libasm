@@ -6,8 +6,9 @@
 
 section .text                           ; Section to put code
 	extern malloc
-	global ft_list_push_front                       ; A global label to be declared for the linker ( GNU LD )
-	global ft_create_elem                       ; A global label to be declared for the linker ( GNU LD )
+	global ft_list_push_node_front
+	global ft_list_push_front
+	global ft_create_elem
 
 ; t_list	*ft_create_elem(void *data);
 ; RDI	contains pointer to data to store to as content
@@ -24,6 +25,22 @@ ft_create_elem:
 .end:
     ret
 	
+; void	ft_list_push_node_front(t_list **begin_list, t_list *node);
+; RDI	contains pointer begin list
+; RSI	contains pointer to node
+; RAX	return not used
+ft_list_push_node_front:
+	cmp		rdi, 0								; if begin list is NULL
+	je		.end								; just end (can't add to no list)
+	cmp		rsi, 0								; if node is NULL
+	je		.end								; just end (can't add no node)
+
+	mov		rax, [rdi]							; get first node into rax
+	mov		[rsi + 8], rax						; set node next to previuos list begin
+	mov		[rdi], rsi							; point new node by list begin							
+.end:
+    ret
+
 ; void	ft_list_push_front(t_list **begin_list, void *data);
 ; RDI	contains pointer begin list
 ; RSI	contains pointer to data to store to as content

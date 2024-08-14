@@ -5,11 +5,10 @@
 ; RAX Result Return
 
 section .text                           ; Section to put code
-	extern ft_list_push_front
+	extern ft_list_push_node_front
 	extern ft_list_pop_front
 	extern ft_destroy_elem
 	global ft_list_search_pos
-	global ft_list_push_node_front
 	global ft_list_sort                 ; A global label to be declared for the linker ( GNU LD )
 
 
@@ -61,22 +60,6 @@ ft_list_search_pos:
 .end:
 	ret
 
-; void	ft_list_push_node_front(t_list **begin_list, t_list *node);
-; RDI	contains pointer begin list
-; RSI	contains pointer to node
-; RAX	return not used
-ft_list_push_node_front:
-	cmp		rdi, 0								; if begin list is NULL
-	je		.end								; just end (can't add to no list)
-	cmp		rsi, 0								; if node is NULL
-	je		.end								; just end (can't add no node)
-
-	mov		rax, [rdi]							; get first node into rax
-	mov		[rsi + 8], rax						; set node next to previuos list begin
-	mov		[rdi], rsi							; point new node by list begin							
-.end:
-    ret
-
 ;void 	ft_list_sort(t_list **begin_list, int (*cmp)());
 ; RDI	contains begin list
 ; RSI	function pointer to compare node
@@ -114,7 +97,7 @@ ft_list_sort:
 	; push this node at front of the position list found
 	mov		rdi, rax				; list where to insert node 
 	mov		rsi, QWORD [rsp + 8]	; recover popped node from stack
-	call	ft_list_push_front
+	call	ft_list_push_node_front
 
 	jmp		.loop
 .break_loop:
