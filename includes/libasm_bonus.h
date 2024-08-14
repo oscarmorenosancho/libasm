@@ -19,6 +19,7 @@ int		ft_get_sign(char **str);
 long	ft_atoui_base(char *str, char *base);	
 int		ft_atoi_base(char *str, char *base);
 t_list	*ft_create_elem(void *data);
+void	ft_list_push_node_front(t_list **begin_list, t_list *node);
 void	ft_list_push_front(t_list **begin_list, void *data);
 int		ft_list_size(t_list *begin_list);
 void	ft_destroy_elem(t_list *node, void (*free_fct)(void *));

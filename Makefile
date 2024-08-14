@@ -6,7 +6,7 @@
 #    By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/16 15:56:04 by apuchill          #+#    #+#              #
-#    Updated: 2024/08/13 14:38:04 by omoreno-         ###   ########.fr        #
+#    Updated: 2024/08/14 11:37:44 by omoreno-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,9 +40,10 @@ TEST_MSRC	:= main_test.c
 
 TEST_B_SRCS	:= test_isspace.c test_count_char.c test_get_index.c test_validate_base.c \
 				test_trim_spaces.c test_get_sign.c test_atoui_base.c test_atoi_base.c \
-				test_create_elem.c test_list_push_front.c test_list_size.c \
-				test_destroy_elem.c test_list_pop_front.c test_list_remove_front.c \
-				test_list_remove_if.c test_list_search_pos.c
+				test_create_elem.c test_list_push_front.c test_list_push_node_front.c \
+				test_list_size.c test_destroy_elem.c test_list_pop_front.c \
+				test_list_remove_front.c test_list_remove_if.c test_list_search_pos.c \
+				test_list_sort.c
 
 TEST_B_MSRC	:= main_test.c
 
