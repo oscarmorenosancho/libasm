@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 16:21:36 by omoreno-          #+#    #+#             */
-/*   Updated: 2024/08/15 18:27:23 by omoreno-         ###   ########.fr       */
+/*   Updated: 2024/08/15 18:37:33 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,8 @@ int main(int argc, char **argv)
 {
 	int			failed_tests;
 	int			arg_is_bonus;
-	char		*content;
 	int			it;
 
-	content = "content";
 	failed_tests = 0;
 	if (argc > 2)
 	{
