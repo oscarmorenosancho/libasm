@@ -49,5 +49,4 @@ int		test_list_sort_examples();
 void	print_list_node(t_list *node);
 void	print_list(t_list *list);
 
-
 #endif

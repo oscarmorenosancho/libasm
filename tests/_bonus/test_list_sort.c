@@ -32,17 +32,16 @@ int		test_list_sort_examples()
 	(void)number;
 	(void)i;
 
-	// printf(GRN_COL"\nCreate an empty list"RST_COL"\n");
-	// print_list(l);
+	printf(GRN_COL"\nCreate an empty list"RST_COL"\n");
+	print_list(l);
 
-	// test_list_sort(&l, strcmp);
+	test_list_sort(&l, strcmp);
 
 	printf(GRN_COL"\nCreate a list with one node"RST_COL"\n");
 	ft_list_push_front(&l, "static data");
 	print_list(l);
 
 	test_list_sort(&l, ft_greater);
-	print_list(l);
 
 	printf(GRN_COL"\nClear the list with one node"RST_COL"\n");
 	ft_list_remove_if(&l, NULL, ft_always_equal, NULL);	
@@ -57,7 +56,18 @@ int		test_list_sort_examples()
 		printf(GRN_COL"\tpush node %p, data:\"%s\", next:%p"RST_COL"\n", l, (char*)l->data, l->next);
 	}
 	print_list(l);
-	test_list_sort(&l, strcmp);
+
+
+	printf("\tuse ft_greater to compare when sorting\n");
+	test_list_sort(&l, ft_greater);
+
+	printf("\tstill use ft_greater\n");
+	printf("\tsort, a list already sorted\n");
+	test_list_sort(&l, ft_greater);
+
+	printf("\tuse ft_lesser to compare when sorting\n");
+	test_list_sort(&l, ft_lesser);
+
 
 	printf(GRN_COL"\nClear the list with %d nodes"RST_COL"\n", number);
 	ft_list_remove_if(&l, NULL, ft_always_equal, free);	
