@@ -14,8 +14,10 @@
 #include <sys/types.h>
 
 void	print_test_header(const char *title);
+void	print_test_result(int res);
+
 int		test_strlen(const char *s);
-int 	test_strcpy(char *dest, const char *src);
+int 	test_strcpy(const char *src);
 int		test_strcmp(const char *s1, const char *s2);
 int 	test_strdup(const char *src);
 int		test_write(int fd0, int fd1, const void *buf, size_t count);
