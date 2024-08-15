@@ -8,6 +8,9 @@
 
 int		test_list_sort(t_list **begin_list, int (*cmp)())
 {
+	int	sort_ret;
+
+	sort_ret = 1;
 	printf(GRN_COL"Using ft_list_sort for args list begin: %p cmp: %p\n"RST_COL, \
 			begin_list, cmp);
 	ft_list_sort(begin_list, cmp);
@@ -15,9 +18,10 @@ int		test_list_sort(t_list **begin_list, int (*cmp)())
 	if (begin_list)
 	{
 		print_list(*begin_list);
-		printf("\tcheck sort result is: %d\n", check_list_sort(*begin_list, cmp));
+		sort_ret = check_list_sort(*begin_list, cmp);
+		printf("\tcheck sort result is: %d\n", sort_ret);
 	}
-	return (0);
+	return (!sort_ret);
 }
 
 int		test_list_sort_examples()
@@ -27,24 +31,25 @@ int		test_list_sort_examples()
 	char	*content;
 	int		number = 10;
 	int		i;
+	int		ret;
 	int		off[] = {5, 7, 1, 4, 6, 3, 0, 9, 8, 2};
 
 	print_test_header("ft_list_sort");
 
-	// printf(GRN_COL"\nCreate an empty list"RST_COL"\n");
-	// print_list(l);
+	printf(GRN_COL"\nCreate an empty list"RST_COL"\n");
+	print_list(l);
 
-	// test_list_sort(&l, strcmp);
+	ret = test_list_sort(&l, strcmp);
 
-	// printf(GRN_COL"\nCreate a list with one node"RST_COL"\n");
-	// ft_list_push_front(&l, "static data");
-	// print_list(l);
+	printf(GRN_COL"\nCreate a list with one node"RST_COL"\n");
+	ft_list_push_front(&l, "static data");
+	print_list(l);
 
-	// test_list_sort(&l, ft_greater);
+	ret += test_list_sort(&l, ft_greater);
 
-	// printf(GRN_COL"\nClear the list with one node"RST_COL"\n");
-	// ft_list_remove_if(&l, NULL, ft_always_equal, NULL);	
-	// print_list(l);
+	printf(GRN_COL"\nClear the list with one node"RST_COL"\n");
+	ft_list_remove_if(&l, NULL, ft_always_equal, NULL);	
+	print_list(l);
 
 	printf(GRN_COL"\nCreate a list with %d nodes"RST_COL"\n", number);
 	for (i = 0; i < number; i++)
@@ -59,20 +64,20 @@ int		test_list_sort_examples()
 	printf("\tcheck sort for lesser result is: %d\n", check_list_sort(l, ft_lesser));
 
 	printf("\tuse ft_greater to compare when sorting\n");
-	test_list_sort(&l, ft_greater);
+	ret += test_list_sort(&l, ft_greater);
 
 	printf("\tstill use ft_greater\n");
 	printf("\tsort, a list already sorted\n");
-	test_list_sort(&l, ft_greater);
+	ret += test_list_sort(&l, ft_greater);
 
 	printf("\tuse ft_lesser to compare when sorting\n");
-	test_list_sort(&l, ft_lesser);
+	ret += test_list_sort(&l, ft_lesser);
 
 
 	printf(GRN_COL"\nClear the list with %d nodes"RST_COL"\n", number);
 	ft_list_remove_if(&l, NULL, ft_always_equal, free);	
 	print_list(l);
 
-	return	(0);
+	return	(ret);
 
 }
