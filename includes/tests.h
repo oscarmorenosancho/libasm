@@ -1,7 +1,7 @@
 #ifndef _TESTS_H
 #define	_TESTS_H
 
-#define BLK_COL "\033[31m"
+#define BLK_COL "\033[30m"
 #define RED_COL "\033[31m"
 #define GRN_COL "\033[32m"
 #define ORG_COL "\033[33m"

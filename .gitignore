@@ -8,3 +8,5 @@ objs
 objs_bonus
 .bonus
 t_objs
+testf_ft_write.txt
+testf_write.txt
