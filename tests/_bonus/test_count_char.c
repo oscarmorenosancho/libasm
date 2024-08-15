@@ -11,7 +11,6 @@ int	test_count_char(const char *ts)
 	size_t	len;
 	size_t	i;
 
-	print_test_header("ft_count_char");
 
 	len = ft_strlen(ts);
 
@@ -23,4 +22,14 @@ int	test_count_char(const char *ts)
 		printf("\t\'%c\': is repeated %d times\n", ts[i], ret );
 	}
 	return (0);
+}
+
+int	test_count_char_examples(void)
+{
+	int	ret;
+
+	print_test_header("ft_count_char");
+
+	ret = test_count_char("qwertyQWERTYr YY");
+	return (ret);
 }

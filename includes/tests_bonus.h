@@ -9,7 +9,7 @@ int		ft_greater(const char *s1, const char *s2);
 int		ft_lesser(const char *s1, const char *s2);
 
 int		check_list_sort(t_list *begin_list, int (*cmp)());
-int		test_isspace();
+int		test_isspace(char c);
 int		test_count_char(const char *ts);
 int		test_get_index(const char *ts, const char *qs);
 int		test_validate_base(const char *base);
@@ -31,21 +31,25 @@ int		test_list_remove_if(t_list **begin_list, char *data_ref, int (*cmp)(),\
 int		test_list_sort_ins(t_list **begin_list, char *content, int (*cmp)());
 int		test_list_sort(t_list **begin_list, int (*cmp)());
 
-int		test_validate_base_examples();
-int		test_trim_spaces_examples();
-int		test_get_sign_examples();
-int		test_atoui_base_examples();
-int		test_atoi_base_examples();
-int		test_list_push_front_examples();
-int		test_list_push_node_front_examples();
-int		test_list_size_examples();
-int		test_destroy_elem_examples();
-int		test_list_pop_front_examples();
-int		test_list_remove_front_examples();
-int		test_list_remove_if_examples();
-int		test_list_search_pos_examples();
-int		test_list_sort_ins_examples();
-int		test_list_sort_examples();
+int		test_isspace_examples(void);
+int		test_count_char_examples(void);
+int		test_get_index_examples(void);
+int		test_validate_base_examples(void);
+int		test_trim_spaces_examples(void);
+int		test_get_sign_examples(void);
+int		test_atoui_base_examples(void);
+int		test_atoi_base_examples(void);
+int		test_list_push_front_examples(void);
+int		test_list_push_node_front_examples(void);
+int		test_list_size_examples(void);
+int		test_destroy_elem_examples(void);
+int		test_list_pop_front_examples(void);
+int		test_list_remove_front_examples(void);
+int		test_list_remove_if_examples(void);
+int		test_list_search_pos_examples(void);
+int		test_list_sort_ins_examples(void);
+int		test_list_sort_examples(void);
+
 void	print_list_node(t_list *node);
 void	print_list(t_list *list);
 

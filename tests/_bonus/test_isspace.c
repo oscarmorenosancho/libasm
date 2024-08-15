@@ -5,11 +5,21 @@
 #include <tests_bonus.h>
 #include <string.h>
 
-int	test_isspace()
+int	test_isspace(char c)
 {
 	int		ret;
-	size_t	len;
+
+	printf(GRN_COL"\nUsing ft_isspace for arg \'%c\'\n"RST_COL, c);
+	ret = ft_isspace(c);
+	printf("\'%c\': %s\n", c, ret ? "is space" : "is NOT space");
+	return (0);
+}
+
+int	test_isspace_examples(void)
+{
+	int	ret;
 	size_t	i;
+	size_t	len;
 	char	ts[] = "\rs \t\n";
 
 	print_test_header("ft_isspace");
@@ -18,10 +28,7 @@ int	test_isspace()
 
 	for (i = 0; i < len; i++)
 	{
-		printf(GRN_COL"\nUsing ft_isspace for arg \'%c\'\n"RST_COL, ts[i]);
-		ret = ft_isspace(ts[i]);
-		printf("\'%c\': %s\n", ts[i], ret ? "is space" : "is NOT space");
+		ret = test_isspace(ts[i]);
 	}
 	return (0);
 }
-

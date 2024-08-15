@@ -24,3 +24,13 @@ int	test_get_index(const char *ts, const char *qs)
 	}
 	return (0);
 }
+
+int	test_get_index_examples(void)
+{
+	int	ret;
+	static const char	*plain = \
+		"Plain text and some special characters 你好世界! to copy";
+
+	ret = test_get_index(plain, "qwertyQWERTYP你");
+	return (ret);
+}
