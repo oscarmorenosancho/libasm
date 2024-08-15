@@ -8,6 +8,7 @@ int		ft_always_equal(const char *s1, const char *s2);
 int		ft_greater(const char *s1, const char *s2);
 int		ft_lesser(const char *s1, const char *s2);
 
+int		check_list_sort(t_list *begin_list, int (*cmp)());
 int		test_isspace();
 int		test_count_char(const char *ts);
 int		test_get_index(const char *ts, const char *qs);
@@ -27,7 +28,6 @@ int		test_list_remove_front(t_list **begin_list, void (*free_fct)(void *));
 int		test_list_search_pos(t_list **begin_list, char *data_ref, int (*cmp)());
 int		test_list_remove_if(t_list **begin_list, char *data_ref, int (*cmp)(),\
 							void (*free_fct)(void *));
-
 int		test_list_sort_ins(t_list **begin_list, char *content, int (*cmp)());
 int		test_list_sort(t_list **begin_list, int (*cmp)());
 
