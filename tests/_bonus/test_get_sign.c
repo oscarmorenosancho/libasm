@@ -6,38 +6,39 @@
 #include <tests_bonus.h>
 #include <string.h>
 
-// typedef struct s_test_sign
-// {
-// 	char	*key;
-// 	int		exp_sign;
-// }	 t_test_sign;
+static char	*strs[] = {"++", "--", "---", "---- +", "", \
+							" ", "++8BF", "--8+", "-----U", "8", NULL};
+static int  expect[] = { 1,     1,      -1,     1,       1, \
+							  1,	  1,      1,      -1,      1, 1 };
 
-static int	test_get_sign(char *str)
+static int	test_get_sign(char *str, int exp)
 {
 	int		sign;
 	char	*remain;
+	int		res;
 
 	remain = str;
-
 	printf(GRN_COL"\tUsing ft_get_sign for arg \"%s\"\n"RST_COL, str);
 	sign = ft_get_sign(&remain);
+	res = (sign != exp);
 	printf("\tsign is: %d, remaining string is \"%s\"\n", sign, remain);
-	return (0);
+	print_test_result (res);
+	return (res);
 }
 
 int	test_get_sign_act()
 {
 	size_t		i;
-	char		*strs[] = {"++", "--", "---", "---- +", "", " ", "++8BF", "--8+", "-----U", "8", NULL};
-
-	print_test_header("ft_get_sign");
+	int		res;
 
 	i = 0;
+	res = 0;
+	print_test_header("ft_get_sign");
 	while (strs[i])
 	{
-		test_get_sign(strs[i]);
+		res += test_get_sign(strs[i], expect[i]);
 		i++;
 	}
-	test_get_sign(strs[i]);
-	return (0);
+	res += test_get_sign(strs[i], expect[i]);
+	return (res);
 }

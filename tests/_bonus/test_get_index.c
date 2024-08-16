@@ -56,7 +56,6 @@ int	test_get_index_act(void)
 	print_test_header("ft_get_index");
 
 	ret = 0;
-	// test_get_index(plain, "qwertyQWERTYP你");
 	ret += test_get_index(plain, plain, plain_loc);
 	ret += test_get_index(plain, query, query_loc);
 	return (ret);
