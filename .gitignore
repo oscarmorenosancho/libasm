@@ -10,3 +10,5 @@ objs_bonus
 t_objs
 testf_ft_write.txt
 testf_write.txt
+testf_ft_read.txt
+testf_read.txt

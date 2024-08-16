@@ -81,10 +81,10 @@ int test_write(int fd0, int fd1, const void *buf, size_t count)
 int test_write_examples(void)
 {
 	int	ret;
-	const char *hw = "Hello World!\n";
-	const char *hw2 = "Hello World! to stderr\n";
-	const char *uc = CYN_COL"Some special characters 你好世界!\n"RST_COL;
-	const char *tab = "\ttabulated\n";
+	const char	*hw = "Hello World!\n";
+	const char	*hw2 = "Hello World! longer message longer message";
+	const char	*uc = CYN_COL"Some special characters 你好世界!\n"RST_COL;
+	const char	*tab = "\ttabulated\n";
 
 	print_test_header("ft_write");
 
