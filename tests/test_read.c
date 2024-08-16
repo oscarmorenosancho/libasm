@@ -65,6 +65,7 @@ int test_read(int fd0, int fd1, void *buf, size_t count)
 	char	ext;
 
 	printf(GRN_COL"\nUsing ft_read to buf %p with fd %d"RST_COL"\n", buf, fd0);
+	printf(RST_COL"Type something and press ENTER to continue>\n"RST_COL);
 	ret = ft_read(fd0, buf, count);
 	if (ret < 0)
 		perror(RED_COL"Error"RST_COL);
@@ -76,6 +77,7 @@ int test_read(int fd0, int fd1, void *buf, size_t count)
 	while( ((ret = ft_read(fd0, &ext, 1) ) > 0) && ext!='\n');
 
 	printf(BLU_COL"\nUsing read to buf %p with fd %d"RST_COL"\n", buf, fd1);
+	printf(RST_COL"Type something and press ENTER to continue>\n"RST_COL);
 	ret = read(fd1, buf, count);
 	if (ret < 0)
 		perror(RED_COL"Error"RST_COL);
