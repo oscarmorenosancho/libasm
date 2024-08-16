@@ -5,7 +5,7 @@
 #include <tests_bonus.h>
 #include <string.h>
 
-int	test_get_index(const char *ts, const char *qs)
+static int	test_get_index(const char *ts, const char *qs)
 {
 	ssize_t	ret;
 	size_t	len;
@@ -25,7 +25,7 @@ int	test_get_index(const char *ts, const char *qs)
 	return (0);
 }
 
-int	test_get_index_examples(void)
+int	test_get_index_act(void)
 {
 	int	ret;
 	static const char	*plain = \

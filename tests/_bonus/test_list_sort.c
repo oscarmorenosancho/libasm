@@ -6,7 +6,7 @@
 #include <tests.h>
 #include <tests_bonus.h>
 
-int		test_list_sort(t_list **begin_list, int (*cmp)())
+static int		test_list_sort(t_list **begin_list, int (*cmp)())
 {
 	int	sort_ret;
 
@@ -24,7 +24,7 @@ int		test_list_sort(t_list **begin_list, int (*cmp)())
 	return (!sort_ret);
 }
 
-int		test_list_sort_examples()
+int		test_list_sort_act()
 {
 	t_list	*l = NULL;
 	char	buf[128];

@@ -3,7 +3,7 @@
 #include <tests.h>
 #include <string.h>
 
-int	test_strlen(const char *s)
+static int	test_strlen(const char *s)
 {
 	size_t	ret1;
 	size_t	ret2;
@@ -22,7 +22,7 @@ int	test_strlen(const char *s)
 	return (res);
 }
 
-int		test_strlen_examples(void)
+int		test_strlen_act(void)
 {
 	int	ret;
 	static const char *uc = CYN_COL"Some special characters 你好世界!\n"RST_COL;

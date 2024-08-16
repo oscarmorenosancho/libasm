@@ -5,7 +5,7 @@
 #include <tests_bonus.h>
 #include <string.h>
 
-int	test_validate_base(const char *base)
+static int	test_validate_base(const char *base)
 {
 	int	ret;
 
@@ -15,7 +15,7 @@ int	test_validate_base(const char *base)
 	return (0);
 }
 
-int	test_validate_base_examples()
+int	test_validate_base_act()
 {
 	print_test_header("ft_validate_base");
 

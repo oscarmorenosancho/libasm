@@ -1,6 +1,5 @@
 ; Call convention arguments RDI, RSI, RDX, RCX, R8 y R9
 ; Return on RAX
-; int ft_atoi_base(char *str, char *base)
 ; RDI source string pointer
 ; RSI base pointer
 ; RAX Result Return
@@ -16,20 +15,33 @@ section .text                           ; Section to put code
 	global ft_atoui_base	
 	global ft_atoi_base
 
+
+;In the C locale, the complete list of whitespace characters is:
+;‘ ’ Space character. 	32
+;\f Form feed.			9 - 13
+;\n New-line.
+;\r Carriage return.
+;\t Horizontal tab.
+;\v And vertical tab.
+; int		ft_isspace(char c);
 ;RDI	char to check
 ;RAX	return != 0 if is a character considered space
 ft_isspace:
 	push	rdi			;save rdi to recover its value later
 	xor		rax,rax		;by default marck is not a space
-	cmp		dil, 0		;if equals 0 not a space
-	je		.end		;so end to return
-	cmp		dil, ' '	;if greater ' ' is not a space
-	jg		.end		;so end to return
+	cmp		dil, ' '	;if is not a space ' '
+	je		.is_space	;so end to return
+	cmp		dil, 9		;less than 9
+	jl		.end		;is not space
+	cmp		dil, 13		;greate than 13
+	jg		.end		;is not space
+.is_space:
 	inc		rax			;else mark is a space
 .end:
 	pop		rdi			;recover rdi original value
 	ret
 
+; size_t	ft_count_char(const char *str, char c);
 ; RDI	string to scan
 ; RSI	char to query
 ; RAX	return count of repetitions
@@ -52,6 +64,7 @@ ft_count_char:
 	pop		rdx
 	ret
 
+; ssize_t	ft_get_index(const char *str, char c);
 ; RDI	string to scan
 ; RSI	char to query
 ; RAX	return index position if found, else -1
@@ -78,6 +91,7 @@ ft_get_index:
 	pop		rdx							; recover original rdx value
 	ret
 
+; int	ft_validate_base(const char *base);
 ; RDI	string to scan
 ; RAX	return !=0 when valid
 ft_validate_base:
@@ -118,6 +132,7 @@ ft_validate_base:
 	pop		rdi							; recover original register value
 	ret
 
+; char	*ft_trim_spaces(const char *str);
 ; RDI	string to trim
 ; RAX	string trimmed
 ft_trim_spaces:
@@ -138,6 +153,7 @@ ft_trim_spaces:
 	pop		rdi				; recover input string to its original value
 	ret
 
+; int		ft_get_sign(char **str);
 ; RDI	pointer to string to get sign, and pointer where there are no more signs
 ; RAX	return sign value (1 if positive, -1 if negative)
 ft_get_sign:
@@ -176,6 +192,7 @@ ft_get_sign:
 	mov		rax, 1
 	ret
 
+; long	ft_atoui_base(char *str, char *base);	
 ; RDI	string to convert
 ; RSI	string to base string
 ; RAX	resulting unsigner int value
@@ -217,7 +234,7 @@ ft_atoui_base:
 	pop		r8				; recover register from stack
 	ret
 
-
+; int		ft_atoi_base(char *str, char *base);
 ; RDI	string to convert
 ; RSI	string to base string
 ; RAX	resulting int value

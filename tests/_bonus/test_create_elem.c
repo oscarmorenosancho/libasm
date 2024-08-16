@@ -6,23 +6,39 @@
 #include <tests_bonus.h>
 #include <string.h>
 
-int		test_create_elem(char *data)
+static const char	content[] = "node content";
+
+static int		test_create_elem(char *data, void (*free_fct)(void *))
 {
 	t_list	*n1;
+	int		res;
 
-	print_test_header("ft_create_elem");
-
+	res = 0;
 	printf(GRN_COL"\tUsing ft_create_elem for arg \'%s\'\n"RST_COL, data);
 	n1 = ft_create_elem(data);
 	if (n1)
 	{
 		printf("\tnode content data is: \"%s\"  next points to: %p\n", (char*)n1->data, n1->next);
-		free (n1);
+		if (free_fct)	free_fct (n1);
 	}
 	else
 	{
 		printf("\tfail to create element");
 		perror(RED_COL"Error"RST_COL);
 	}
-	return (0);
+	print_test_result(res);
+	return (res);
+}
+
+int	test_create_elem_act(void)
+{
+	int		ret;
+	char 	*dup;
+	print_test_header("ft_create_elem");
+
+	dup = strdup("dynamic content");
+	ret = 0;
+	ret += test_create_elem((char*)content, NULL);
+	ret += test_create_elem(dup, free);
+	return (ret);
 }

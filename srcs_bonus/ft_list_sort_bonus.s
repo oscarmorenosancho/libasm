@@ -100,7 +100,7 @@ ft_list_sort_ins:
 
 
 
-;void 	ft_list_sort(t_list **begin_list, int (*cmp)());
+; void 	ft_list_sort(t_list **begin_list, int (*cmp)());
 ; RDI	contains begin list
 ; RSI	function pointer to compare node
 ; RAX	return not used

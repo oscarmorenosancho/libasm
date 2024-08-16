@@ -6,7 +6,7 @@
 #include <tests_bonus.h>
 #include <string.h>
 
-int		test_destroy_elem(t_list *node, void (*free_fct)(void *))
+static int		test_destroy_elem(t_list *node, void (*free_fct)(void *))
 {
 	printf(GRN_COL"Using ft_destroy_elem for args node: %p free_fct: %p'\n"RST_COL, node, free_fct);
 	if (!node)
@@ -16,7 +16,7 @@ int		test_destroy_elem(t_list *node, void (*free_fct)(void *))
 	return	(0);
 }
 
-int		test_destroy_elem_examples()
+int		test_destroy_elem_act()
 {
 	t_list	*node;
 	char	*content;

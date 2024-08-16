@@ -6,7 +6,7 @@
 #include <tests_bonus.h>
 #include <string.h>
 
-int		test_list_pop_front(t_list **begin_list, int free_cont)
+static int		test_list_pop_front(t_list **begin_list, int free_cont)
 {
 	t_list *node;
 
@@ -25,7 +25,7 @@ int		test_list_pop_front(t_list **begin_list, int free_cont)
 }
 
 
-int		test_list_pop_front_examples()
+int		test_list_pop_front_act()
 {
 	t_list	*l = NULL;
 	char	buf[128];

@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 16:21:36 by omoreno-          #+#    #+#             */
-/*   Updated: 2024/08/15 18:37:33 by omoreno-         ###   ########.fr       */
+/*   Updated: 2024/08/16 18:05:56 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,32 +27,32 @@ static const char	err_msg[] = \
 		RED_COL"Error only one argument or none can be used"RST_COL"\n";
 
 static t_lookup lu_table[] = { \
-	{"strlen", test_strlen_examples }, \
-	{"strcpy", test_strcpy_examples }, \
-	{"strdup", test_strdup_examples }, \
-	{"strcmp", test_strcmp_examples }, \
-	{"write", test_write_examples }, \
-	{"read", test_read_examples }, \
+	{"strlen", test_strlen_act }, \
+	{"strcpy", test_strcpy_act }, \
+	{"strdup", test_strdup_act }, \
+	{"strcmp", test_strcmp_act }, \
+	{"write", test_write_act }, \
+	{"read", test_read_act }, \
 
-	{"isspace", test_isspace_examples}, \
-	{"count_char", test_count_char_examples}, \
-	{"get_index", test_get_index_examples}, \
-	{"validate_base", test_validate_base_examples}, \
-	{"trim_spaces", test_trim_spaces_examples}, \
-	{"get_sign", test_get_sign_examples}, \
-	{"atoui_base", test_atoui_base_examples}, \
-	{"atoi_base", test_atoi_base_examples}, \
-	{"create_elem", test_create_elem}, \
-	{"list_push_front", test_list_push_front_examples}, \
-	{"list_push_node_front", test_list_push_node_front_examples}, \
-	{"list_size", test_list_size_examples}, \
-	{"destroy_elem", test_destroy_elem_examples}, \
-	{"list_pop_front", test_list_pop_front_examples}, \
-	{"list_remove_front", test_list_remove_front_examples}, \
-	{"list_remove_if", test_list_remove_if_examples}, \
-	{"list_search_pos", test_list_search_pos_examples}, \
-	{"list_sort_ins", test_list_sort_ins_examples}, \
-	{"list_sort", test_list_sort_examples}, \
+	{"isspace", test_isspace_act}, \
+	{"count_char", test_count_char_act}, \
+	{"get_index", test_get_index_act}, \
+	{"validate_base", test_validate_base_act}, \
+	{"trim_spaces", test_trim_spaces_act}, \
+	{"get_sign", test_get_sign_act}, \
+	{"atoui_base", test_atoui_base_act}, \
+	{"atoi_base", test_atoi_base_act}, \
+	{"create_elem", test_create_elem_act}, \
+	{"list_push_front", test_list_push_front_act}, \
+	{"list_push_node_front", test_list_push_node_front_act}, \
+	{"list_size", test_list_size_act}, \
+	{"destroy_elem", test_destroy_elem_act}, \
+	{"list_pop_front", test_list_pop_front_act}, \
+	{"list_remove_front", test_list_remove_front_act}, \
+	{"list_remove_if", test_list_remove_if_act}, \
+	{"list_search_pos", test_list_search_pos_act}, \
+	{"list_sort_ins", test_list_sort_ins_act}, \
+	{"list_sort", test_list_sort_act}, \
 	{NULL, NULL}
 	};
 

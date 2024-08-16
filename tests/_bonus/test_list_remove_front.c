@@ -6,7 +6,7 @@
 #include <tests_bonus.h>
 #include <string.h>
 
-int		test_list_remove_front(t_list **begin_list, void (*free_fct)(void *))
+static int		test_list_remove_front(t_list **begin_list, void (*free_fct)(void *))
 {
 	// t_list *node;
 	if (!begin_list)
@@ -37,7 +37,7 @@ int		test_list_remove_front(t_list **begin_list, void (*free_fct)(void *))
 	return	(0);
 }
 
-int		test_list_remove_front_examples()
+int		test_list_remove_front_act()
 {
 	t_list	*l = NULL;
 	char	buf[128];

@@ -5,7 +5,7 @@
 #include <tests_bonus.h>
 #include <string.h>
 
-int	test_count_char(const char *ts)
+static int	test_count_char(const char *ts)
 {
 	int		ret;
 	size_t	len;
@@ -24,7 +24,7 @@ int	test_count_char(const char *ts)
 	return (0);
 }
 
-int	test_count_char_examples(void)
+int	test_count_char_act(void)
 {
 	int	ret;
 

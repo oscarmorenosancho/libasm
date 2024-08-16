@@ -6,7 +6,13 @@
 #include <tests_bonus.h>
 #include <string.h>
 
-int	test_get_sign(char *str)
+// typedef struct s_test_sign
+// {
+// 	char	*key;
+// 	int		exp_sign;
+// }	 t_test_sign;
+
+static int	test_get_sign(char *str)
 {
 	int		sign;
 	char	*remain;
@@ -19,7 +25,7 @@ int	test_get_sign(char *str)
 	return (0);
 }
 
-int	test_get_sign_examples()
+int	test_get_sign_act()
 {
 	size_t		i;
 	char		*strs[] = {"++", "--", "---", "---- +", "", " ", "++8BF", "--8+", "-----U", "8", NULL};

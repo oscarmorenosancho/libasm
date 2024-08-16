@@ -3,7 +3,7 @@
 #include <tests.h>
 #include <string.h>
 
-int 	test_strcpy(const char *src)
+static int 	test_strcpy(const char *src)
 {
 	char 	buf1[1024];
 	char 	buf2[1024];
@@ -31,7 +31,7 @@ int 	test_strcpy(const char *src)
 	return (res);
 }
 
-int 	test_strcpy_examples(void)
+int 	test_strcpy_act(void)
 {
 	int	ret;
 	static const char *plain = "Plain text and some special characters 你好世界! to copy";

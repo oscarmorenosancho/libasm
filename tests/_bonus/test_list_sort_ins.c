@@ -6,7 +6,7 @@
 #include <tests_bonus.h>
 #include <string.h>
 
-int		test_list_sort_ins(t_list **begin_list, char *content, int (*cmp)())
+static int		test_list_sort_ins(t_list **begin_list, char *content, int (*cmp)())
 {
 	t_list *node;
 
@@ -27,7 +27,7 @@ int		test_list_sort_ins(t_list **begin_list, char *content, int (*cmp)())
 }
 
 
-int		test_list_sort_ins_examples()
+int		test_list_sort_ins_act()
 {
 	t_list	*l = NULL;
 	char	buf[128];
@@ -38,8 +38,8 @@ int		test_list_sort_ins_examples()
 
 	print_test_header("ft_list_sort_ins");
 
-	printf(GRN_COL"Test to pop an element from NULL"RST_COL"\n");
-	test_list_pop_front(NULL, 0);
+	printf(GRN_COL"Test to insert an element to NULL list"RST_COL"\n");
+	test_list_sort_ins(NULL, "inserted", ft_greater);
 
 	printf(GRN_COL"\nCreate an empty list"RST_COL"\n");
 	print_list(l);

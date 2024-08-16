@@ -4,7 +4,7 @@
 #include <tests.h>
 #include <string.h>
 
-int 	test_strdup(const char *src)
+static int 	test_strdup(const char *src)
 {
 	int		res;
 	char	*ret1;
@@ -31,7 +31,7 @@ int 	test_strdup(const char *src)
 	return (res);
 }
 
-int 	test_strdup_examples(void)
+int 	test_strdup_act(void)
 {
 	int	ret;
 	static const char *plain = "Plain text and some special characters 你好世界! to copy";

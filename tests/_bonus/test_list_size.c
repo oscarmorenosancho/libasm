@@ -6,7 +6,7 @@
 #include <tests_bonus.h>
 #include <string.h>
 
-int		test_list_size(t_list *begin_list)
+static int		test_list_size(t_list *begin_list)
 {
 	size_t	count;
 	printf(GRN_COL"Using ft_list_size for args list begin: %p\n"RST_COL, begin_list);
@@ -15,7 +15,7 @@ int		test_list_size(t_list *begin_list)
 	return (0);
 }
 
-int		test_list_size_examples()
+int		test_list_size_act()
 {
 	t_list	*l = NULL;
 	char	buf[128];

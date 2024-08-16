@@ -12,12 +12,12 @@ static const char	err_msg[] = \
 		RED_COL"Error only one argument or none can be used"RST_COL"\n";
 
 static t_lookup lu_table[] = { \
-	{"strlen", test_strlen_examples }, \
-	{"strcpy", test_strcpy_examples }, \
-	{"strdup", test_strdup_examples }, \
-	{"strcmp", test_strcmp_examples }, \
-	{"write", test_write_examples }, \
-	{"read", test_read_examples }, \
+	{"strlen", test_strlen_act }, \
+	{"strcpy", test_strcpy_act }, \
+	{"strdup", test_strdup_act }, \
+	{"strcmp", test_strcmp_act }, \
+	{"write", test_write_act }, \
+	{"read", test_read_act }, \
 	{NULL, NULL}
 	};
 

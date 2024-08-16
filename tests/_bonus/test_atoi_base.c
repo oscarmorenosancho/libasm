@@ -5,7 +5,7 @@
 #include <tests_bonus.h>
 #include <string.h>
 
-int		test_atoi_base(char *str, char *base)
+static int		test_atoi_base(char *str, char *base)
 {
 	int	ret;
 
@@ -16,7 +16,7 @@ int		test_atoi_base(char *str, char *base)
 	return (0);
 }
 
-int		test_atoi_base_examples()
+int		test_atoi_base_act()
 {
 	size_t		i;
 	char		*strs[] = {"---15", "---FF", "---+8", "---F", "-", "--15x", "--FFx", "--8+", "--Fx", "--x", NULL};

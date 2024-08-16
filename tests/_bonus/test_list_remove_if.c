@@ -6,7 +6,7 @@
 #include <tests_bonus.h>
 #include <string.h>
 
-int		test_list_remove_if(t_list **begin_list, char *data_ref, int (*cmp)(),\
+static int		test_list_remove_if(t_list **begin_list, char *data_ref, int (*cmp)(),\
 							void (*free_fct)(void *))
 {
 	// t_list *node;
@@ -29,7 +29,7 @@ int		test_list_remove_if(t_list **begin_list, char *data_ref, int (*cmp)(),\
 	return	(0);
 }
 
-int		test_list_remove_if_examples()
+int		test_list_remove_if_act()
 {
 	t_list	*l = NULL;
 	char	buf[128];

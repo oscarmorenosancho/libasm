@@ -5,7 +5,7 @@
 #include <tests_bonus.h>
 #include <string.h>
 
-int		test_atoui_base(char *str, char *base)
+static int		test_atoui_base(char *str, char *base)
 {
 	size_t	ret;
 
@@ -16,7 +16,7 @@ int		test_atoui_base(char *str, char *base)
 	return (0);
 }
 
-int		test_atoui_base_examples()
+int		test_atoui_base_act()
 {
 	size_t		i;
 	char		*strs[] = { "10000000000000000000000000000000", "-10000000000000000000000000000000",

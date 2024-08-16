@@ -59,7 +59,7 @@ static	int test_read_from_file(const char *buf, size_t reduce_read)
 	return (res);
 }
 
-int test_read(int fd0, int fd1, void *buf, size_t count)
+static int test_read(int fd0, int fd1, void *buf, size_t count)
 {
 	ssize_t	ret;
 	char	ext;
@@ -90,7 +90,7 @@ int test_read(int fd0, int fd1, void *buf, size_t count)
 	return (0);
 }
 
-int test_read_examples(void)
+int test_read_act(void)
 {
 	int			ret;
 	char		buf[128];

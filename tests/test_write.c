@@ -56,7 +56,7 @@ static	int test_write_to_file(const void *buf, size_t count)
 	return (res);
 }
 
-int test_write(int fd0, int fd1, const void *buf, size_t count)
+static int test_write(int fd0, int fd1, const void *buf, size_t count)
 {
 	int		res;
 	ssize_t	ret;
@@ -78,7 +78,7 @@ int test_write(int fd0, int fd1, const void *buf, size_t count)
 	return (res);
 }
 
-int test_write_examples(void)
+int test_write_act(void)
 {
 	int	ret;
 	const char	*hw = "Hello World!\n";

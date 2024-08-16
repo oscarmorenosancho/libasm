@@ -6,7 +6,7 @@
 #include <tests_bonus.h>
 #include <string.h>
 
-int test_list_search_pos(t_list **begin_list, char *data_ref, int (*cmp)())
+static int test_list_search_pos(t_list **begin_list, char *data_ref, int (*cmp)())
 {
 	t_list	**lr;
 	t_list	*n = NULL;
@@ -21,7 +21,7 @@ int test_list_search_pos(t_list **begin_list, char *data_ref, int (*cmp)())
 	return (0);
 }
 
-int		test_list_search_pos_examples()
+int		test_list_search_pos_act()
 {
 	t_list	*l = NULL;
 	char	buf[128];

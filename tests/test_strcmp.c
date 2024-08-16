@@ -3,7 +3,7 @@
 #include <tests.h>
 #include <string.h>
 
-int	test_strcmp(const char *s1, const char *s2)
+static int	test_strcmp(const char *s1, const char *s2)
 {
 	int	ret1;
 	int	ret2;
@@ -22,7 +22,7 @@ int	test_strcmp(const char *s1, const char *s2)
 	return (res);
 }
 
-int	test_strcmp_examples(void)
+int	test_strcmp_act(void)
 {
 	int					ret;
 	static const char	*hw = "Hello World!\n";
