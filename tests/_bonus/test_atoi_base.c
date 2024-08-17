@@ -98,18 +98,12 @@ int		test_atoi_base_act()
 	int			res;
 	
 	print_test_header("ft_atoi_base");
-	(void)hex_base;
-	(void)dec_base;
-	(void)bin_base;
-	(void)hex_exp;
-	(void)dec_exp;
-	(void)bin_exp;
 
 	res = 0;
 	i = 0;
 	while (strs[i])
 	{
-		printf("index in table %zu\n", i);
+		// printf("index in table %zu\n", i);
 		res += test_atoi_base((char*)strs[i], bin_base, bin_exp[i]);
 		res += test_atoi_base((char*)strs[i], dec_base, dec_exp[i]);
 		res += test_atoi_base((char*)strs[i], hex_base, hex_exp[i]);
