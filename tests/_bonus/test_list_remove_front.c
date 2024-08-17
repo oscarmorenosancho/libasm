@@ -8,11 +8,19 @@
 
 static int		test_list_remove_front(t_list **begin_list, void (*free_fct)(void *))
 {
-	// t_list *node;
+	int		res = 0;
+	int		prev_len = 0;
+	void	*prev_data = NULL;
+
 	if (!begin_list)
 		printf(GRN_COL"list passed is NULL"RST_COL"\n");
-	else if (!(*begin_list))
-		printf(GRN_COL"list passed is empty"RST_COL"\n");
+	else
+	{
+		prev_len = ft_list_size(*begin_list);
+		if (prev_len > 0)
+			prev_data = (*begin_list)->data;
+		else	printf(GRN_COL"list passed is empty"RST_COL"\n");
+	}
 	printf(GRN_COL"Using ft_list_remove_front"RST_COL"\n");
 	printf(GRN_COL"Test to remove an element from list %p with free_fct %p"RST_COL"\n", begin_list, free_fct);
 	if (begin_list)
@@ -26,15 +34,33 @@ static int		test_list_remove_front(t_list **begin_list, void (*free_fct)(void *)
 	printf("After calling ft_list_remove_front list %p"RST_COL"\n", begin_list);
 	if (begin_list)
 	{
-		t_list	*node = *begin_list;
-		printf(GRN_COL"front node in list is %p"RST_COL"\n", node);
-		if (node)
-			printf(GRN_COL"front node content is %s, next is %p"RST_COL"\n", (char*)node->data, node->next);
+		if (prev_len == 0)
+		{
+			printf(GRN_COL"From empty list ft_list_pop_front don't get a node\n"RST_COL"\n");
+			res =  (ft_list_size(*begin_list) != prev_len);
+			if (res)
+				printf(RED_COL"Size can NOT change if list was empty"RST_COL"\n");
+		}
+		else
+		{
+			t_list	*node = *begin_list;
+			printf(GRN_COL"front node in list is %p"RST_COL"\n", node);
+			if (node)
+			{
+				printf(GRN_COL"front node content is %s, next is %p"RST_COL"\n", (char*)node->data, node->next);
+				res = (node->data == prev_data);
+			}
+			int cur_len = ft_list_size(*begin_list);
+			if ((prev_len - cur_len) != 1)
+			{
+				printf(RED_COL"Current size: %d vs previous size %d"RST_COL"\n", prev_len, cur_len);
+				printf(RED_COL"Size has NOT decreased 1"RST_COL"\n");
+				res++;
+			}
+		}		
 	}
-
-	// printf(GRN_COL"Node popped by ft_list_pop_front content is: %p"RST_COL"\n", node);
-	// printf(GRN_COL"node content content is: \"%s\""RST_COL"\n", (char *)node->data);
-	return	(0);
+	print_test_result(res);
+	return	(res);
 }
 
 int		test_list_remove_front_act()
@@ -44,17 +70,18 @@ int		test_list_remove_front_act()
 	char	*content;
 	int		number = 10;
 	int		i;
+	int		res = 0;
 
 	print_test_header("ft_list_remove_front");
 
-	test_list_remove_front(NULL, NULL);
+	res += test_list_remove_front(NULL, NULL);
 
 	printf(GRN_COL"Create an empty list"RST_COL"\n");
-	test_list_remove_front(&l, NULL);
+	res += test_list_remove_front(&l, NULL);
 
 	printf(GRN_COL"Create a list with one node"RST_COL"\n");
 	ft_list_push_front(&l, "static data");
-	test_list_remove_front(&l, NULL);
+	res += test_list_remove_front(&l, NULL);
 
 	printf(GRN_COL"Create a list with %d nodes"RST_COL"\n", number);
 	for (i = 0; i < number; i++)
@@ -66,7 +93,7 @@ int		test_list_remove_front_act()
 	for (i = 0; i < number; i++)
 	{
 		sprintf(buf, "content of node %d", i);
-		test_list_remove_front(&l, free);
+		res += test_list_remove_front(&l, free);
 	}
-	return	(0);
+	return	(res);
 }
