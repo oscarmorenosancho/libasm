@@ -6,7 +6,7 @@
 #include <tests.h>
 #include <tests_bonus.h>
 
-static int		off[] = {5, 7, 1, 4, 6, 3, 0, 9, 8, 2};
+static const int	off[] = {5, 7, 1, 4, 6, 3, 0, 9, 8, 2};
 
 static int		test_list_sort(t_list **begin_list, int (*cmp)())
 {
@@ -86,15 +86,12 @@ int		test_list_sort_act(void)
 	ret += test_list_sort_empty();
 	l = create_list_of_size(number);
 	printf("\tuse ft_greater to compare when sorting\n");
-
 	ret += test_list_sort(&l, ft_greater);
 	printf("\tstill use ft_greater\n");
 	printf("\tsort, a list already sorted\n");
-
 	ret += test_list_sort(&l, ft_greater);
 	printf("\tuse ft_lesser to compare when sorting\n");
 	ret += test_list_sort(&l, ft_lesser);
-
 	clear_list(&l, number);
 	return	(ret);
 }

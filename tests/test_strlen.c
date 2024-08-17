@@ -12,11 +12,9 @@ static int	test_strlen(const char *s)
 	printf(GRN_COL"\nUsing ft_strlen\n"RST_COL);
 	ret1 = ft_strlen(s);
 	printf("counted chars in \"%s\": %zu\n", s, ret1);
-
 	printf(BLU_COL"\nUsing strlen\n"RST_COL);
 	ret2 = strlen(s);
 	printf("counted chars in \"%s\": %zu\n", s, ret2);
-
 	res = (ret1 != ret2);
 	print_test_result(res);
 	return (res);

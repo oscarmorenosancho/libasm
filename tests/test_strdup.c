@@ -15,13 +15,11 @@ static int 	test_strdup(const char *src)
 	printf("before dup:\n\treturn is %p \"%s\",\n\tsource is %p \"%s\"\n", ret1, ret1, src, src);
 	ret1 = ft_strdup(src);
 	printf("after dup:\n\treturn is %p \"%s\",\n\tsource is %p \"%s\"\n", ret1, ret1, src, src);
-
 	ret2 = NULL;
 	printf(BLU_COL"\nUsing strdup\n"RST_COL);
 	printf("before dup:\n\treturn is %p \"%s\",\n\tsource is %p \"%s\"\n", ret2, ret2, src, src);
 	ret2 = strdup(src);
 	printf("after dup:\n\treturn is %p \"%s\",\n\tsource is %p \"%s\"\n", ret2, ret2, src, src);
-
 	res = strcmp(ret1, ret2);
 	if (ret1)
 		free(ret1);
@@ -41,4 +39,3 @@ int 	test_strdup_act(void)
 	ret += test_strdup("");
 	return (ret);
 }
-

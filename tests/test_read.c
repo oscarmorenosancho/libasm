@@ -75,7 +75,6 @@ static int test_read(int fd0, int fd1, void *buf, size_t count)
 		printf("read chars: %zd %s\n", ret, (char *)buf);
 	}
 	while( ((ret = ft_read(fd0, &ext, 1) ) > 0) && ext!='\n');
-
 	printf(BLU_COL"\nUsing read to buf %p with fd %d"RST_COL"\n", buf, fd1);
 	printf(RST_COL"Type something and press ENTER to continue>\n"RST_COL);
 	ret = read(fd1, buf, count);

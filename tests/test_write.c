@@ -87,7 +87,6 @@ int test_write_act(void)
 	const char	*tab = "\ttabulated\n";
 
 	print_test_header("ft_write");
-
 	ret = test_write(1, 1, hw, strlen(hw));
 	ret += test_write(2, 2, hw2, strlen(hw2));
 	ret += test_write(1, 1, uc, strlen(uc));

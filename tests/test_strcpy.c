@@ -37,9 +37,7 @@ int 	test_strcpy_act(void)
 	static const char *plain = "Plain text and some special characters 你好世界! to copy";
 
 	print_test_header("ft_strcpy");
-
 	ret = test_strcpy(plain);	
 	ret += test_strcpy("");	
-
 	return (ret);
 }
