@@ -32,5 +32,7 @@ int		test_list_sort_act(void);
 
 void	print_list_node(t_list *node);
 void	print_list(t_list *list);
+void	print_binary(long value);
+void	print_binary_int(int value);
 
 #endif

@@ -258,8 +258,9 @@ ft_atoi_base:
 	pop		rsi				; purge stack where the string remain position is into rsi no longer needed
 	cmp		rdi, -1			; if sign is not -1
 	jne		.end			; leave reault as is
-	neg		rax				; else negate 32bits result since sign is negative
+	neg		rax				; negate 32bits result since sign is negative
 .end:
+	and		rax,0xFFFFFFFF	; take 32 bits
 	pop		rdi				; recover input string to its original value
 	pop		rsi				; recover input base string to its original value
     ret

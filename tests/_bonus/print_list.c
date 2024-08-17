@@ -29,3 +29,37 @@ void	print_list(t_list *list)
 	else
 		printf(ORG_COL"List is Empty"RST_COL"\n");
 }
+
+void	print_binary(long value)
+{
+	int i;
+	int len = sizeof (long) * 8;
+	char buf[len + 1];
+	long cur;
+
+	cur = value;
+	for (i = 0; i < len; i++)
+	{
+		buf[len - i - 1] = (cur & 1)? '1' : '0';
+		cur >>= 1; 
+	}
+	buf[len] = 0;
+	printf("%s", buf);
+}
+
+void	print_binary_int(int value)
+{
+	int i;
+	int len = sizeof (int) * 8;
+	char buf[len + 1];
+	long cur;
+
+	cur = value;
+	for (i = 0; i < len; i++)
+	{
+		buf[len - i - 1] = (cur & 1)? '1' : '0';
+		cur >>= 1; 
+	}
+	buf[len] = 0;
+	printf("%s", buf);
+}

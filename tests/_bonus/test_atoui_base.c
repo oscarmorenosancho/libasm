@@ -41,24 +41,6 @@ static const char	bin_base[] = "01";
 static const char	dec_base[] = "0123456789";
 static const char	hex_base[] = "0123456789ABCDEF";
 
-static void		print_binary(long value)
-{
-	int i;
-	int len = sizeof (long) * 8;
-	char buf[len + 1];
-	long cur;
-
-	cur = value;
-	for (i = 0; i < len; i++)
-	{
-		buf[len - i - 1] = (cur & 1)? '1' : '0';
-		cur >>= 1; 
-	}
-	buf[len] = 0;
-	printf("%s", buf);
-}
-
-
 static int		test_atoui_base(char *str, const char *base, long expect)
 {
 	int		res;
