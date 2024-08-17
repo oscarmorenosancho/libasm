@@ -39,7 +39,6 @@ int		test_list_size_act()
 	ft_list_push_front(&l, "static data");
 	res += test_list_size(l, 1);
 	printf(GRN_COL"\nClear the list with one node"RST_COL"\n");
-	// ft_list_remove_front(&l, NULL);
 	ft_list_remove_if(&l, NULL, ft_always_equal, NULL);	
 	res += test_list_size(l, 0);
 
@@ -51,8 +50,6 @@ int		test_list_size_act()
 		ft_list_push_front(&l, content);
 	}
 	res += test_list_size(l, number);
-	// for (i = 0; i < number; i++)
-	// 	ft_list_remove_front(&l, free);
 	ft_list_remove_if(&l, NULL, ft_always_equal, free);	
 	printf(GRN_COL"\nClear the list with %d nodes"RST_COL"\n", number);
 	res += test_list_size(l, 0);
