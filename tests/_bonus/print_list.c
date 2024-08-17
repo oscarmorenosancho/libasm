@@ -25,9 +25,10 @@ void	print_list(t_list *list)
 			print_list_node(cur);
 			cur = cur->next;
 		}
+		printf(CYN_COL"List finish here"RST_COL"\n\n");
 	}
 	else
-		printf(ORG_COL"List is Empty"RST_COL"\n");
+		printf(ORG_COL"List is Empty"RST_COL"\n\n");
 }
 
 void	print_binary(long value)

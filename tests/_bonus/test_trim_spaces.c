@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_trim_spaces.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/17 20:23:21 by omoreno-          #+#    #+#             */
+/*   Updated: 2024/08/17 20:23:39 by omoreno-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 #include <libasm.h>
 #include <libasm_bonus.h>
@@ -38,7 +50,6 @@ int	test_trim_spaces_act()
 	size_t		i;
 
 	print_test_header("ft_trim_spaces");
-
 	test_trim_spaces(NULL);
 	i = 0;
 	ret = 0;

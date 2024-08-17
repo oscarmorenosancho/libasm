@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_atoui_base.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/17 20:56:25 by omoreno-          #+#    #+#             */
+/*   Updated: 2024/08/17 20:56:40 by omoreno-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 #include <libasm.h>
 #include <libasm_bonus.h>
@@ -46,7 +58,8 @@ static int		test_atoui_base(char *str, const char *base, long expect)
 	int		res;
 	long	ret;
 
-	printf(GRN_COL"\tUsing ft_atoui_base for arg \"%s\" and base \"%s\"\n"RST_COL, str, base);
+	printf(GRN_COL"\tUsing ft_atoui_base for arg \"%s\" and base \"%s\"\n" \
+			RST_COL, str, base);
 	ret = ft_atoui_base(str, (char*)base);
 	res = (ret != expect);
 	printf("\tbin is: 0b");
@@ -66,13 +79,6 @@ int		test_atoui_base_act()
 	int			res;
 	
 	print_test_header("ft_atoui_base");
-	(void)hex_base;
-	(void)dec_base;
-	(void)bin_base;
-	(void)hex_exp;
-	(void)dec_exp;
-	(void)bin_exp;
-
 	res = 0;
 	i = 0;
 	while (strs[i])

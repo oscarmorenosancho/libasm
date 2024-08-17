@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_count_char.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/17 20:56:49 by omoreno-          #+#    #+#             */
+/*   Updated: 2024/08/17 20:56:57 by omoreno-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 #include <libasm.h>
 #include <libasm_bonus.h>
@@ -15,7 +27,6 @@ static int	test_count_1char(const char *ts, char c, int ec)
 	int		ret;
 
 	res = 0;
-
 	printf(GRN_COL"\nUsing string \"%s\""RST_COL"\n", ts);
 	printf(GRN_COL"\tUsing ft_count_char for arg \'%c\'\n"RST_COL, c);
 	ret = ft_count_char(ts, c);
@@ -34,7 +45,6 @@ static int	test_count_char(const char *ts, const int *ec)
 
 	res = 0;
 	len = ft_strlen(ts);
-
 	printf(GRN_COL"\nUsing string \"%s\""RST_COL"\n", ts);
 	for (i = 0; i < len; i++)
 	{
@@ -53,7 +63,6 @@ int	test_count_char_act(void)
 
 	ret = 0;
 	print_test_header("ft_count_char");
-
 	ret += test_count_char(base_str, exp_count);
 	ret += test_count_1char(base_str, 'Z', 0);
 	return (ret);

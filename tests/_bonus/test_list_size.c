@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_list_size.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/17 20:08:25 by omoreno-          #+#    #+#             */
+/*   Updated: 2024/08/17 20:33:43 by omoreno-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <libasm.h>
@@ -6,42 +18,32 @@
 #include <tests_bonus.h>
 #include <string.h>
 
+#ifndef test_list_size_sz
+	#define test_list_size_sz 10
+#endif
+
 static int		test_list_size(t_list *begin_list, int exp_size)
 {
 	int	count;
-	int	res = 0;
+	int	res;
 
-	printf(GRN_COL"Using ft_list_size for args list begin: %p\n"RST_COL, begin_list);
+	res = 0;
+	printf(GRN_COL"Using ft_list_size for args list begin: %p\n"RST_COL, \
+		begin_list);
 	count = ft_list_size(begin_list);
 	res = (count != exp_size);
 	printf("\tafter calling ft_list_size, size is %d\n", count);
 	print_test_result(res);
 	return (res);
 }
-
-int		test_list_size_act()
+static t_list	*create_list_of_size(int number)
 {
-	t_list	*l = NULL;
 	char	buf[128];
+	t_list	*l;
 	char	*content;
-	int		number = 10;
 	int		i;
-	int		res = 0;
 
-	print_test_header("ft_list_size");
-
-	res += test_list_size(NULL, 0);
-
-	printf(GRN_COL"\nCreate an empty list"RST_COL"\n");
-	res += test_list_size(NULL, 0);
-
-	printf(GRN_COL"\nCreate a list with one node"RST_COL"\n");
-	ft_list_push_front(&l, "static data");
-	res += test_list_size(l, 1);
-	printf(GRN_COL"\nClear the list with one node"RST_COL"\n");
-	ft_list_remove_if(&l, NULL, ft_always_equal, NULL);	
-	res += test_list_size(l, 0);
-
+	l = NULL;
 	printf(GRN_COL"\nCreate a list with %d nodes"RST_COL"\n", number);
 	for (i = 0; i < number; i++)
 	{
@@ -49,10 +51,29 @@ int		test_list_size_act()
 		content = strdup(buf);
 		ft_list_push_front(&l, content);
 	}
-	res += test_list_size(l, number);
-	ft_list_remove_if(&l, NULL, ft_always_equal, free);	
-	printf(GRN_COL"\nClear the list with %d nodes"RST_COL"\n", number);
+	return (l);
+}
+
+
+int		test_list_size_act()
+{
+	t_list	*l;
+	int		res;
+
+	res = 0;
+	l = NULL;
+	print_test_header("ft_list_size");
+	res += test_list_size(NULL, 0);
+	printf(GRN_COL"\nCreate an empty list"RST_COL"\n");
+	res += test_list_size(NULL, 0);
+	printf(GRN_COL"\nCreate a list with one node"RST_COL"\n");
+	ft_list_push_front(&l, "static data");
+	res += test_list_size(l, 1);
+	clear_list(&l, NULL);
+	res += test_list_size(l, 0);
+	create_list_of_size(test_list_size_sz);
+	res += test_list_size(l, test_list_size_sz);
+	clear_list(&l, free);
 	res += test_list_size(l, 0);
 	return	(res);
-
 }

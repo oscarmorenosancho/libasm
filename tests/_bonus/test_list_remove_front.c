@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_list_remove_front.c                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/17 20:43:22 by omoreno-          #+#    #+#             */
+/*   Updated: 2024/08/17 20:46:42 by omoreno-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <libasm.h>
@@ -6,7 +18,12 @@
 #include <tests_bonus.h>
 #include <string.h>
 
-static int		test_list_remove_front(t_list **begin_list, void (*free_fct)(void *))
+#ifndef test_list_rm_sz
+# define test_list_rm_sz 10
+#endif
+
+static int		test_list_remove_front(t_list **begin_list, \
+											void (*free_fct)(void *))
 {
 	int		res = 0;
 	int		prev_len = 0;
@@ -63,34 +80,42 @@ static int		test_list_remove_front(t_list **begin_list, void (*free_fct)(void *)
 	return	(res);
 }
 
-int		test_list_remove_front_act()
+static t_list	*create_list_of_size(int number)
 {
-	t_list	*l = NULL;
+	t_list	*l;
 	char	buf[128];
 	char	*content;
-	int		number = 10;
 	int		i;
-	int		res = 0;
 
-	print_test_header("ft_list_remove_front");
-
-	res += test_list_remove_front(NULL, NULL);
-
-	printf(GRN_COL"Create an empty list"RST_COL"\n");
-	res += test_list_remove_front(&l, NULL);
-
-	printf(GRN_COL"Create a list with one node"RST_COL"\n");
-	ft_list_push_front(&l, "static data");
-	res += test_list_remove_front(&l, NULL);
-
-	printf(GRN_COL"Create a list with %d nodes"RST_COL"\n", number);
+	l = NULL;
+	printf(GRN_COL"\nCreate a list with %d nodes"RST_COL"\n", number);
 	for (i = 0; i < number; i++)
 	{
 		sprintf(buf, "content of node %d", i);
 		content = strdup(buf);
 		ft_list_push_front(&l, content);
 	}
-	for (i = 0; i < number; i++)
+	return (l);
+}
+
+int		test_list_remove_front_act()
+{
+	t_list	*l;
+	char	buf[128];
+	int		i;
+	int		res;
+
+	l = NULL;
+	res = 0;
+	print_test_header("ft_list_remove_front");
+	res += test_list_remove_front(NULL, NULL);
+	printf(GRN_COL"Create an empty list"RST_COL"\n");
+	res += test_list_remove_front(&l, NULL);
+	printf(GRN_COL"Create a list with one node"RST_COL"\n");
+	ft_list_push_front(&l, "static data");
+	res += test_list_remove_front(&l, NULL);
+	l = create_list_of_size(test_list_rm_sz);
+	for (i = 0; i < test_list_rm_sz; i++)
 	{
 		sprintf(buf, "content of node %d", i);
 		res += test_list_remove_front(&l, free);

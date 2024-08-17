@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_read.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/17 19:38:24 by omoreno-          #+#    #+#             */
+/*   Updated: 2024/08/17 20:22:24 by omoreno-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 #include <libasm.h>
 #include <tests.h>
@@ -5,14 +17,18 @@
 #include <string.h>
 #include <fcntl.h>
 
-
-static char openw_fail_msg[] = RED_COL"Open failed to create and open file"RST_COL"\n";
-static char openr_fail_msg[] = RED_COL"Open failed to read file"RST_COL"\n";
-static char f_to_std[] = "testf_read.txt";
-static char f_to_mine[] = "testf_ft_read.txt";
-static	int wflags = O_CREAT | O_WRONLY | O_TRUNC;
-static	int rflags = O_RDONLY;
-static	int mode = S_IRUSR | S_IWUSR;
+static const char	*hw = "Hello World!\n";
+static const char	*hw2 = "Hello World! longer message longer message";
+static const char	*uc = CYN_COL"Some special characters 你好世界!\n"RST_COL;
+static const char	*tab = "\ttabulated\n";
+static const char openw_fail_msg[] = RED_COL"Open failed to create and open file"\
+	RST_COL"\n";
+static const char openr_fail_msg[] = RED_COL"Open failed to read file"RST_COL"\n";
+static const char f_to_std[] = "testf_read.txt";
+static const char f_to_mine[] = "testf_ft_read.txt";
+static const int wflags = O_CREAT | O_WRONLY | O_TRUNC;
+static const int rflags = O_RDONLY;
+static const int mode = S_IRUSR | S_IWUSR;
 
 static	int test_read_from_file(const char *buf, size_t reduce_read)
 {
@@ -93,13 +109,8 @@ int test_read_act(void)
 {
 	int			ret;
 	char		buf[128];
-	const char	*hw = "Hello World!\n";
-	const char	*hw2 = "Hello World! longer message longer message";
-	const char	*uc = CYN_COL"Some special characters 你好世界!\n"RST_COL;
-	const char	*tab = "\ttabulated\n";
 
 	print_test_header("ft_read");
-
 	ret = test_read(0, 0, buf, 1);
 	ret += test_read(10, 10, buf, 1);
 	ret += test_read(0, 0, NULL, 1);

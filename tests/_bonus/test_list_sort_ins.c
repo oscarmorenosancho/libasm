@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_list_sort_ins.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/17 20:07:42 by omoreno-          #+#    #+#             */
+/*   Updated: 2024/08/17 20:25:54 by omoreno-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <libasm.h>
@@ -63,13 +75,6 @@ static	int		test_create_sorted_of_size(t_list **l, int number)
 	print_list(*l);
 	return (res);
 }
-
-static void clear_list(t_list **l, void (*free_fct)(void *))
-{
-	printf(GRN_COL"\nClear list"RST_COL"\n");
-	ft_list_remove_if(l, NULL, ft_always_equal, free_fct);
-	print_list(*l);
-}	
 
 int		test_list_sort_ins_act()
 {

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_list_remove_if.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/17 20:35:52 by omoreno-          #+#    #+#             */
+/*   Updated: 2024/08/17 20:41:52 by omoreno-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <libasm.h>
@@ -6,8 +18,12 @@
 #include <tests_bonus.h>
 #include <string.h>
 
-static int		test_list_remove_if(t_list **begin_list, char *data_ref, int (*cmp)(),\
-							void (*free_fct)(void *), int exp_decr)
+#ifndef test_size_rm_if
+# define test_size_rm_if 10
+#endif
+
+static int		test_list_remove_if(t_list **begin_list, char *data_ref, \
+			int (*cmp)(), void (*free_fct)(void *), int exp_decr)
 {
 	int		res = 0;
 	int		prev_size = 0;
@@ -41,27 +57,14 @@ static int		test_list_remove_if(t_list **begin_list, char *data_ref, int (*cmp)(
 	return	(res);
 }
 
-int		test_list_remove_if_act()
+static t_list	*create_list_of_size(int number)
 {
-	t_list	*l = NULL;
+	t_list	*l;
 	char	buf[128];
 	char	*content;
-	int		number = 10;
 	int		i;
-	int		res = 0;
 
-	print_test_header("ft_list_remove_if");
-
-	res += test_list_remove_if(NULL, "A", strcmp, NULL, 0);
-
-	printf(GRN_COL"\nCreate an empty list"RST_COL"\n");
-	res += test_list_remove_if(&l, "A", strcmp, NULL, 0);
-
-	printf(GRN_COL"\nCreate a list with one node"RST_COL"\n");
-	ft_list_push_front(&l, "static data");
-	res += test_list_remove_if(&l, "A", strcmp, NULL, 0);
-	res += test_list_remove_if(&l, "static data", strcmp, NULL, 1);
-
+	l = NULL;
 	printf(GRN_COL"\nCreate a list with %d nodes"RST_COL"\n", number);
 	for (i = 0; i < number; i++)
 	{
@@ -69,7 +72,28 @@ int		test_list_remove_if_act()
 		content = strdup(buf);
 		ft_list_push_front(&l, content);
 	}
-	for (i = 0; i < number; i++)
+	return (l);
+}
+
+int		test_list_remove_if_act()
+{
+	t_list	*l;
+	char	buf[128];
+	int		i;
+	int		res;
+
+	l = NULL;
+	res = 0;
+	print_test_header("ft_list_remove_if");
+	res += test_list_remove_if(NULL, "A", strcmp, NULL, 0);
+	printf(GRN_COL"\nCreate an empty list"RST_COL"\n");
+	res += test_list_remove_if(&l, "A", strcmp, NULL, 0);
+	printf(GRN_COL"\nCreate a list with one node"RST_COL"\n");
+	ft_list_push_front(&l, "static data");
+	res += test_list_remove_if(&l, "A", strcmp, NULL, 0);
+	res += test_list_remove_if(&l, "static data", strcmp, NULL, 1);
+	l = create_list_of_size(test_size_rm_if);
+	for (i = 0; i < test_size_rm_if; i++)
 	{
 		sprintf(buf, "content of node %d", i);
 		res += test_list_remove_if(&l, buf, strcmp, free, 1);

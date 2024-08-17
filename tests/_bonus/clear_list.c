@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libasm.h                                           :+:      :+:    :+:   */
+/*   clear_list.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/17 19:37:16 by omoreno-          #+#    #+#             */
-/*   Updated: 2024/08/17 19:37:18 by omoreno-         ###   ########.fr       */
+/*   Created: 2024/08/17 19:35:36 by omoreno-          #+#    #+#             */
+/*   Updated: 2024/08/17 19:50:58 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _LIBASM_H
-#define	_LIBASM_H
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <libasm.h>
+#include <libasm_bonus.h>
+#include <tests.h>
+#include <tests_bonus.h>
 
-#include <errno.h>
-#include <sys/types.h>
-
-size_t	ft_strlen(const char *s);
-char 	*ft_strcpy(char *dest, const char *src);
-int		ft_strcmp(const char *s1, const char *s2);
-char	*ft_strdup(const char *s);
-ssize_t	ft_write(int fd, const void *buf, size_t count);
-ssize_t	ft_read(int fd, void *buf, size_t count);
-
-#endif
+void clear_list(t_list **l, void (*free_fct)(void *))
+{
+	printf(GRN_COL"Clear list"RST_COL"\n");
+	ft_list_remove_if(l, NULL, ft_always_equal, free_fct);
+	print_list(*l);
+}	

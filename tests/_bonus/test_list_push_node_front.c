@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_list_push_node_front.c                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/17 20:08:15 by omoreno-          #+#    #+#             */
+/*   Updated: 2024/08/17 20:48:19 by omoreno-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -6,16 +18,16 @@
 #include <tests.h>
 #include <tests_bonus.h>
 
-static int		test_list_push_node_front(t_list **begin_list, t_list *node, \
-					int print_res)
+static int		test_list_push_node_front(t_list **begin_list, \
+					t_list *node, int print_res)
 {
 	int	res;
 	ssize_t	prev_len;
 
 	prev_len = 0;
 	res = 0;
-	printf(GRN_COL"Using ft_list_push_node_front for args list begin: %p  node: %p"\
-			RST_COL"\n", begin_list, node);
+	printf(GRN_COL"Using ft_list_push_node_front for args list begin: %p" \
+		"  node: %p"RST_COL"\n", begin_list, node);
 	if (node)
 		printf("\tnode content data is: \"%s\"  next points to: %p\n", \
 		(char*)node->data, node->next);
@@ -48,26 +60,20 @@ static int		test_list_push_node_front(t_list **begin_list, t_list *node, \
 
 int		test_list_push_node_front_act(void)
 {
-	t_list *l = NULL;
+	t_list *l;
 	t_list *node;
 	int		res;
 
 	res = 0;
+	l = NULL;
 	print_test_header("ft_list_push_node_front");
-
 	printf(GRN_COL"\nCreate a list with one node"RST_COL"\n");
 	ft_list_push_front(&l, "static data");
-
 	printf(GRN_COL"\nCreate a node"RST_COL"\n");
 	node = ft_create_elem("new static data");
 	print_list_node(node);
-
 	printf(GRN_COL"\nPush the node: %p"RST_COL"\n", node);
 	res += test_list_push_node_front(&l, node, 1);
-
-	ft_list_remove_if(&l, NULL, ft_always_equal, NULL);	
-	printf(GRN_COL"Clear the list"RST_COL"\n");
-	print_list(l);
-
+	clear_list(&l, NULL);
 	return (res);
 }

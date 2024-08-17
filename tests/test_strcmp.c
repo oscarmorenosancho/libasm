@@ -1,7 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_strcmp.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/17 19:38:32 by omoreno-          #+#    #+#             */
+/*   Updated: 2024/08/17 20:20:26 by omoreno-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 #include <libasm.h>
 #include <tests.h>
 #include <string.h>
+
+static const char	*hw = "Hello World!\n";
+static const char	*hw2 = "Hello World! to stderr\n";
+static const char	*tab = "\ttabulated\n";
 
 static int	test_strcmp(const char *s1, const char *s2)
 {
@@ -23,9 +39,6 @@ static int	test_strcmp(const char *s1, const char *s2)
 int	test_strcmp_act(void)
 {
 	int					ret;
-	static const char	*hw = "Hello World!\n";
-	static const char	*hw2 = "Hello World! to stderr\n";
-	static const char	*tab = "\ttabulated\n";
 
 	print_test_header("ft_strcmp");
 	ret = test_strcmp("", "");	

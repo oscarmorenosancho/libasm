@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_list_sort.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/17 19:37:54 by omoreno-          #+#    #+#             */
+/*   Updated: 2024/08/17 20:25:48 by omoreno-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -13,8 +25,8 @@ static int		test_list_sort(t_list **begin_list, int (*cmp)())
 	int	sort_ret;
 
 	sort_ret = 1;
-	printf(GRN_COL"Using ft_list_sort for args list begin: %p cmp: %p\n"RST_COL, \
-			begin_list, cmp);
+	printf(GRN_COL"Using ft_list_sort for args list begin: %p cmp: %p\n" \
+			RST_COL, begin_list, cmp);
 	ft_list_sort(begin_list, cmp);
 	printf("\tafter calling ft_list_sort\n");
 	if (begin_list)
@@ -23,14 +35,17 @@ static int		test_list_sort(t_list **begin_list, int (*cmp)())
 		sort_ret = check_list_sort(*begin_list, cmp);
 		printf("\tcheck sort result is: %d\n", sort_ret);
 	}
+	print_test_result(!sort_ret);
 	return (!sort_ret);
 }
 
 static int		test_list_sort_empty(void)
 {
-	t_list	*l = NULL;
-	int		ret = 0;
+	t_list	*l;
+	int		ret;
 
+	l = NULL;
+	ret = 0;
 	printf(GRN_COL"\nCreate an empty list"RST_COL"\n");
 	print_list(l);
 	ret += test_list_sort(&l, strcmp);
@@ -68,23 +83,16 @@ static t_list	*create_list_of_size(int number)
 	return (l);
 }
 
-static	void	clear_list(t_list **l, int number)
-{
-	printf(GRN_COL"\nClear the list with %d nodes"RST_COL"\n", number);
-	ft_list_remove_if(l, NULL, ft_always_equal, free);
-	if (l)
-		print_list(*l);
-}
-
 int		test_list_sort_act(void)
 {
-	t_list	*l = NULL;
-	int		number = 10;
-	int		ret = 0;
+	t_list	*l;
+	int		ret;
 
+	l = NULL;
+	ret = 0;
 	print_test_header("ft_list_sort");
 	ret += test_list_sort_empty();
-	l = create_list_of_size(number);
+	l = create_list_of_size(10);
 	printf("\tuse ft_greater to compare when sorting\n");
 	ret += test_list_sort(&l, ft_greater);
 	printf("\tstill use ft_greater\n");
@@ -92,6 +100,6 @@ int		test_list_sort_act(void)
 	ret += test_list_sort(&l, ft_greater);
 	printf("\tuse ft_lesser to compare when sorting\n");
 	ret += test_list_sort(&l, ft_lesser);
-	clear_list(&l, number);
+	clear_list(&l, free);
 	return	(ret);
 }

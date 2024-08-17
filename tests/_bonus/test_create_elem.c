@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_create_elem.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/17 20:57:22 by omoreno-          #+#    #+#             */
+/*   Updated: 2024/08/17 20:57:23 by omoreno-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <libasm.h>
@@ -18,7 +30,8 @@ static int		test_create_elem(char *data, void (*free_fct)(void *))
 	n1 = ft_create_elem(data);
 	if (n1)
 	{
-		printf("\tnode content data is: \"%s\"  next points to: %p\n", (char*)n1->data, n1->next);
+		printf("\tnode content data is: \"%s\"  next points to: %p\n", \
+			(char*)n1->data, n1->next);
 		if (free_fct)	free_fct (n1);
 	}
 	else
@@ -34,10 +47,10 @@ int	test_create_elem_act(void)
 {
 	int		ret;
 	char 	*dup;
-	print_test_header("ft_create_elem");
 
-	dup = strdup("dynamic content");
 	ret = 0;
+	print_test_header("ft_create_elem");
+	dup = strdup("dynamic content");
 	ret += test_create_elem((char*)content, NULL);
 	ret += test_create_elem(dup, free);
 	return (ret);

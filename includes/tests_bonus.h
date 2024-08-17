@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   tests_bonus.h                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/17 19:37:05 by omoreno-          #+#    #+#             */
+/*   Updated: 2024/08/17 19:37:08 by omoreno-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef _TESTS_BONUS_H
 #define	_TESTS_BONUS_H
 
@@ -9,6 +21,7 @@ int		ft_greater(const char *s1, const char *s2);
 int		ft_lesser(const char *s1, const char *s2);
 
 int		check_list_sort(t_list *begin_list, int (*cmp)());
+void 	clear_list(t_list **l, void (*free_fct)(void *));
 
 int		test_isspace_act(void);
 int		test_count_char_act(void);

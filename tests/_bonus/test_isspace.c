@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_isspace.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/17 20:58:52 by omoreno-          #+#    #+#             */
+/*   Updated: 2024/08/17 20:59:15 by omoreno-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 #include <libasm.h>
 #include <libasm_bonus.h>
@@ -15,8 +27,10 @@ static int	test_isspace(char c)
 	printf(GRN_COL"Using ft_isspace for arg \'%c\'\n"RST_COL, c);
 	ret2 = (isspace(c) != 0);
 	ret1 = (ft_isspace(c) != 0);
-	printf("for ft_isspace \'%c\': %s\n", c, ret1 ? "is space" : "is NOT space");
-	printf("for    isspace \'%c\': %s\n", c, ret2 ? "is space" : "is NOT space");
+	printf("for ft_isspace \'%c\': %s\n", \
+			c, ret1 ? "is space" : "is NOT space");
+	printf("for    isspace \'%c\': %s\n", \
+			c, ret2 ? "is space" : "is NOT space");
 	res = (ret1 != ret2);
 	print_test_result(res);
 	return (res);
@@ -32,10 +46,8 @@ int	test_isspace_act(void)
 
 	ret = 0;
 	print_test_header("ft_isspace");
-
 	len = ft_strlen(ts);
 	printf("\nTest all characters in \"%s\" with length %zu\n", ts, len);
-
 	for (i = 0; i < len; i++)
 	{
 		is = test_isspace(ts[i]);
