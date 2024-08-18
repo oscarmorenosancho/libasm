@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 20:58:52 by omoreno-          #+#    #+#             */
-/*   Updated: 2024/08/17 20:59:15 by omoreno-         ###   ########.fr       */
+/*   Updated: 2024/08/18 13:49:47 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 #include <tests_bonus.h>
 #include <string.h>
 #include <ctype.h>
+
+static char	ts[] = "s\b \t\n\v\f\r";
 
 static int	test_isspace(char c)
 {
@@ -42,7 +44,6 @@ int	test_isspace_act(void)
 	int			ret;
 	size_t		i;
 	size_t		len;
-	static char	ts[] = "s\b \t\n\v\f\r";
 
 	ret = 0;
 	print_test_header("ft_isspace");
