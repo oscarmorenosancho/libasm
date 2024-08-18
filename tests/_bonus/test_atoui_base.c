@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 20:56:25 by omoreno-          #+#    #+#             */
-/*   Updated: 2024/08/17 20:56:40 by omoreno-         ###   ########.fr       */
+/*   Updated: 2024/08/18 16:41:10 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int		test_atoui_base_act()
 	i = 0;
 	while (strs[i])
 	{
-		printf("index in table %zu\n", i);
+		// printf("index in table %zu\n", i);
 		res += test_atoui_base((char*)strs[i], bin_base, bin_exp[i]);
 		res += test_atoui_base((char*)strs[i], dec_base, dec_exp[i]);
 		res += test_atoui_base((char*)strs[i], hex_base, hex_exp[i]);

@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 20:43:22 by omoreno-          #+#    #+#             */
-/*   Updated: 2024/08/17 20:46:42 by omoreno-         ###   ########.fr       */
+/*   Updated: 2024/08/18 16:56:33 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static int		test_list_remove_front(t_list **begin_list, \
 			printf(GRN_COL"front node in list is %p"RST_COL"\n", node);
 			if (node)
 			{
-				printf(GRN_COL"front node content is %s, next is %p"RST_COL"\n", (char*)node->data, node->next);
+				printf(GRN_COL"front node content is \"%s\", next is %p"RST_COL"\n", (char*)node->data, node->next);
 				res = (node->data == prev_data);
 			}
 			int cur_len = ft_list_size(*begin_list);

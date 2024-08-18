@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 20:08:25 by omoreno-          #+#    #+#             */
-/*   Updated: 2024/08/17 20:33:43 by omoreno-         ###   ########.fr       */
+/*   Updated: 2024/08/18 16:46:59 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int		test_list_size_act()
 	res += test_list_size(l, 1);
 	clear_list(&l, NULL);
 	res += test_list_size(l, 0);
-	create_list_of_size(test_list_size_sz);
+	l = create_list_of_size(test_list_size_sz);
 	res += test_list_size(l, test_list_size_sz);
 	clear_list(&l, free);
 	res += test_list_size(l, 0);
