@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 20:08:35 by omoreno-          #+#    #+#             */
-/*   Updated: 2024/08/18 16:24:22 by omoreno-         ###   ########.fr       */
+/*   Updated: 2024/08/18 16:27:30 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ static	void	create_list_of_size(t_list	**l, int number)
 		printf(GRN_COL"\tpush node %p, data:\"%s\", next:%p"RST_COL"\n", \
 			*l, (char*)(*l)->data, (*l)->next);
 	}
-	printf("\n");
 }
 
 static int	test_locate_at_head(int number)

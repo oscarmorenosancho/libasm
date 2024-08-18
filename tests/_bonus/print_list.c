@@ -20,6 +20,7 @@ void	print_list(t_list *list)
 
 	if (list)
 	{
+		printf(CYN_COL"\nFront list here\n"RST_COL);
 		while (cur)
 		{
 			print_list_node(cur);
