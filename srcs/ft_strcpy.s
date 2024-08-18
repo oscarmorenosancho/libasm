@@ -1,3 +1,15 @@
+; **************************************************************************** ;
+;                                                                              ;
+;                                                         :::      ::::::::    ;
+;    ft_strcpy.s                                        :+:      :+:    :+:    ;
+;                                                     +:+ +:+         +:+      ;
+;    By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+         ;
+;                                                 +#+#+#+#+#+   +#+            ;
+;    Created: 2024/08/18 19:03:26 by omoreno-          #+#    #+#              ;
+;    Updated: 2024/08/18 19:03:28 by omoreno-         ###   ########.fr        ;
+;                                                                              ;
+; **************************************************************************** ;
+
 ; Call convention arguments RDI, RSI, RDX, RCX, R8 y R9
 ; Return on RAX
 ; RDI destination pointer

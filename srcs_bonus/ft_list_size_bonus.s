@@ -1,3 +1,15 @@
+; **************************************************************************** ;
+;                                                                              ;
+;                                                         :::      ::::::::    ;
+;    ft_list_size_bonus.s                               :+:      :+:    :+:    ;
+;                                                     +:+ +:+         +:+      ;
+;    By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+         ;
+;                                                 +#+#+#+#+#+   +#+            ;
+;    Created: 2024/08/18 19:04:31 by omoreno-          #+#    #+#              ;
+;    Updated: 2024/08/18 19:04:33 by omoreno-         ###   ########.fr        ;
+;                                                                              ;
+; **************************************************************************** ;
+
 ; Call convention arguments RDI, RSI, RDX, RCX, R8 y R9
 ; Return on RAX
 ; RDI destination pointer
