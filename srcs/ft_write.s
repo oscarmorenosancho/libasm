@@ -6,22 +6,22 @@
 ;    By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2024/08/18 19:03:56 by omoreno-          #+#    #+#              ;
-;    Updated: 2024/08/18 19:03:58 by omoreno-         ###   ########.fr        ;
+;    Updated: 2024/08/19 20:52:15 by omoreno-         ###   ########.fr        ;
 ;                                                                              ;
 ; **************************************************************************** ;
-
-; Call convention arguments RDI, RSI, RDX, RCX, R8 y R9
-; Return on RAX
-; SYS_WRITE system call convention
-; RDI file descriptor
-; RSI buffer pointer
-; RDX Length of string
-; RAX Result Return
 
 section .text                           ; Section to put code
     extern	__errno_location
     global ft_write                       ; A global label to be declared for the linker ( GNU LD )
 
+; Call convention arguments RDI, RSI, RDX, RCX, R8 y R9
+; Return on RAX
+
+; ssize_t	ft_write(int fd, const void *buf, size_t count);
+; RDI file descriptor
+; RSI buffer pointer
+; RDX Length of string
+; RAX Result Return
 ft_write:
 	;push rbp                            ;save rbp on stack
 	;mov	rbp, rsp                        ;base point set to stack pointer

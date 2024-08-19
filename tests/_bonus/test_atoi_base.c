@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 20:55:58 by omoreno-          #+#    #+#             */
-/*   Updated: 2024/08/17 20:56:19 by omoreno-         ###   ########.fr       */
+/*   Updated: 2024/08/19 20:43:17 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,5 +121,8 @@ int		test_atoi_base_act()
 		res += test_atoi_base((char*)strs[i], hex_base, hex_exp[i]);
 		i++;
 	}
+	res += test_atoi_base("-123", "", 0);
+	res += test_atoi_base(" 123", "1", 0);
+	res += test_atoi_base("123", "022", 0);
 	return (res);
 }

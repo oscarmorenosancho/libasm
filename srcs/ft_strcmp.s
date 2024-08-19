@@ -6,19 +6,19 @@
 ;    By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2024/08/19 19:57:33 by omoreno-          #+#    #+#              ;
-;    Updated: 2024/08/19 19:57:35 by omoreno-         ###   ########.fr        ;
+;    Updated: 2024/08/19 20:46:51 by omoreno-         ###   ########.fr        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
+section .text                           ; Section to put code
+	global ft_strcmp                       ; A global label to be declared for the linker ( GNU LD )
+
+; int		ft_strcmp(const char *s1, const char *s2);
 ; Call convention arguments RDI, RSI, RDX, RCX, R8 y R9
 ; Return on RAX
 ; RDI s1 pointer
 ; RSI s2 pointer
 ; RAX Result Return
-
-section .text                           ; Section to put code
-	global ft_strcmp                       ; A global label to be declared for the linker ( GNU LD )
-
 ft_strcmp:
 	xor		rax, rax					; set to 0 by xoring with itself
 .loop:

@@ -6,22 +6,23 @@
 ;    By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2024/08/18 19:03:07 by omoreno-          #+#    #+#              ;
-;    Updated: 2024/08/18 19:06:42 by omoreno-         ###   ########.fr        ;
+;    Updated: 2024/08/19 20:51:28 by omoreno-         ###   ########.fr        ;
 ;                                                                              ;
 ; **************************************************************************** ;
-
-; Call convention arguments RDI, RSI, RDX, RCX, R8 y R9
-; Return on RAX
-; SYS_READ system call convention
-; RDI file descriptor
-; RSI buffer pointer
-; RDX Length of string
-; RAX Result Return
 
 extern	__errno_location
 global ft_read                       ; A global label to be declared for the linker ( GNU LD )
 
 section .text                           ; Section to put code
+
+; Call convention arguments RDI, RSI, RDX, RCX, R8 y R9
+; Return on RAX
+
+; ssize_t	ft_read(int fd, void *buf, size_t count);
+; RDI file descriptor
+; RSI buffer pointer
+; RDX Length of string
+; RAX Result Return
 ft_read:
 	;push rbp                            ;save rbp on stack
 	;mov	rbp, rsp                        ;base point set to stack pointer

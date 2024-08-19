@@ -6,15 +6,9 @@
 ;    By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2024/08/18 19:03:34 by omoreno-          #+#    #+#              ;
-;    Updated: 2024/08/18 19:03:36 by omoreno-         ###   ########.fr        ;
+;    Updated: 2024/08/19 20:50:24 by omoreno-         ###   ########.fr        ;
 ;                                                                              ;
 ; **************************************************************************** ;
-
-
-; Call convention arguments RDI, RSI, RDX, RCX, R8 y R9
-; Return on RAX
-; RDI buffer pointer
-; RAX Result Return
 
 section .text                           ; Section to put code
 	extern	malloc
@@ -22,7 +16,12 @@ section .text                           ; Section to put code
 	extern	ft_strcpy
 	global ft_strdup                       ; A global label to be declared for the linker ( GNU LD )
 
+; Call convention arguments RDI, RSI, RDX, RCX, R8 y R9
+; Return on RAX
 
+; char	*ft_strdup(const char *s);
+; RDI buffer pointer
+; RAX Result Return
 ft_strdup:
 	push	rdi							;save source str witch came on rdi on stack
 	call	ft_strlen
