@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 16:21:36 by omoreno-          #+#    #+#             */
-/*   Updated: 2024/08/17 18:07:09 by omoreno-         ###   ########.fr       */
+/*   Updated: 2024/08/19 19:51:25 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,14 +83,14 @@ int main(int argc, char **argv)
 		ft_write(2, err_msg, ft_strlen(err_msg));
 		return(1);
 	}
-	arg_is_bonus_plus = (argc == 2 && !ft_strcmp(argv[1], "bonusp"));
-	arg_is_bonus = (argc == 2 && !ft_strcmp(argv[1], "bonus"));
+	arg_is_bonus_plus = (argc == 2 && !strcmp(argv[1], "bonusp"));
+	arg_is_bonus = (argc == 2 && !strcmp(argv[1], "bonus"));
 	it = 0;
 	while (lu_table[it].key)
 	{
 		int arg_b = (arg_is_bonus && lu_table[it].core) || arg_is_bonus_plus;
 		int arg_t = (it > 5) ? arg_b : argc == 1 ;
-		if ((arg_t || (argc == 2 && !ft_strcmp(argv[1], lu_table[it].key))))
+		if ((arg_t || (argc == 2 && !strcmp(argv[1], lu_table[it].key))))
 			failed_tests += lu_table[it].action();
 		it++;
 	}

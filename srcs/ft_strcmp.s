@@ -5,8 +5,8 @@
 ;                                                     +:+ +:+         +:+      ;
 ;    By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
-;    Created: 2024/08/18 19:03:17 by omoreno-          #+#    #+#              ;
-;    Updated: 2024/08/18 19:03:22 by omoreno-         ###   ########.fr        ;
+;    Created: 2024/08/19 19:57:33 by omoreno-          #+#    #+#              ;
+;    Updated: 2024/08/19 19:57:35 by omoreno-         ###   ########.fr        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
@@ -21,14 +21,10 @@ section .text                           ; Section to put code
 
 ft_strcmp:
 	xor		rax, rax					; set to 0 by xoring with itself
-	xor		rdx, rdx					; set to 0 by xoring with itself
-	xor		rcx, rcx					; set to 0 by xoring with itself
 .loop:
 	mov		dl, BYTE [rdi + rax]
 	mov		cl, BYTE [rsi + rax]
-	xor		r8, r8					; set to 0 by xoring with itself
-	mov		r8b, dl
-	sub		r8b, cl
+	cmp		dl, cl
 	jne		.end
 	cmp		dl, 0
 	je		.end
@@ -37,5 +33,10 @@ ft_strcmp:
 	inc		rax
 	jmp		.loop
 .end:
-	movsx		rax, r8b
+	xor		rdx, rdx					; set to 0 by xoring with itself
+	xor		rcx, rcx					; set to 0 by xoring with itself
+	mov		dl, BYTE [rdi + rax]
+	mov		cl, BYTE [rsi + rax]
+	sub		rdx, rcx
+	mov		rax, rdx
     ret

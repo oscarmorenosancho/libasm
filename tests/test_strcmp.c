@@ -6,7 +6,7 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 19:38:32 by omoreno-          #+#    #+#             */
-/*   Updated: 2024/08/17 20:20:26 by omoreno-         ###   ########.fr       */
+/*   Updated: 2024/08/19 19:01:59 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,7 @@ int	test_strcmp_act(void)
 	ret += test_strcmp("hw", "hw*");	
 	ret += test_strcmp(tab, hw);	
 	ret += test_strcmp(hw2, hw);
+	ret += test_strcmp("\0", "\200");	
+	ret += test_strcmp("\200", "\0");	
 	return (ret);
 }

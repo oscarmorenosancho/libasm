@@ -6,13 +6,14 @@
 /*   By: omoreno- <omoreno-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 19:38:07 by omoreno-          #+#    #+#             */
-/*   Updated: 2024/08/17 19:38:09 by omoreno-         ###   ########.fr       */
+/*   Updated: 2024/08/19 19:51:57 by omoreno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <libasm.h>
 #include <tests.h>
+#include <string.h>
 
 typedef struct s_lookup
 {
@@ -49,7 +50,6 @@ static int	print_fails(int failed_tests)
 int main(int argc, char **argv)
 {
 	int			failed_tests;
-	int			arg_is_bonus;
 	int			it;
 
 	failed_tests = 0;
@@ -58,11 +58,10 @@ int main(int argc, char **argv)
 		ft_write(2, err_msg, ft_strlen(err_msg));
 		return(1);
 	}
-	arg_is_bonus = (argc == 2 && !ft_strcmp(argv[1], "bonus"));
 	it = 0;
 	while (lu_table[it].key)
 	{
-		if ((argc == 1 || (argc == 2 && !ft_strcmp(argv[1], lu_table[it].key))))
+		if ((argc == 1 || (argc == 2 && !strcmp(argv[1], lu_table[it].key))))
 			failed_tests += lu_table[it].action();
 		it++;
 	}
